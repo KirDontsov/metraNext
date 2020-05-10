@@ -1,0 +1,273 @@
+@import "Vars.scss";
+
+.suggestions-input,
+.form-group > input {
+	width: 100%;
+	height: 30px;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	margin-bottom: 10px;
+}
+
+.coords {
+	list-style-type: none;
+	display: block;
+	position: absolute;
+	top: 60px;
+	right: 10px;
+	z-index: 99;
+	background: rgba(255, 255, 255, 0.7);
+	padding: 23px;
+	& li {
+		font-size: 20px;
+		line-height: 160%;
+		span {
+			color: $blue;
+		}
+	}
+}
+
+.comment {
+	font-weight: bold;
+}
+
+.Quiz {
+	// float: left;
+	top: 170px;
+	left: 120px;
+	width: 500px;
+	background: rgba(255, 255, 255, 0.8);
+	z-index: 1;
+	padding: 0 30px 30px 0;
+	margin-bottom: 115px;
+	@media (max-width: 1440px) {
+		left: 9%;
+		@media (max-width: 1024px) {
+			left: 12%;
+			@media (max-width: 768px) {
+				position: static;
+				padding: 30px 0;
+				width: 100%;
+			}
+		}
+	}
+	h2.dark {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 70px;
+		line-height: 83px;
+		color: $textColor;
+		margin-bottom: 96px;
+		span {
+			color: $blue;
+		}
+	}
+	.quizForm {
+		max-width: 400px;
+		position: relative;
+		@media (max-width: 768px) {
+			max-width: 100%;
+		}
+		.quizText {
+			font-size: 20px;
+			line-height: 24px;
+			margin-bottom: 13px;
+		}
+		.suggestions-container {
+			margin: 20px 0;
+		}
+		.suggestions-input,
+		.form-group > input {
+			background: $passiveBlue;
+			border: none !important;
+			height: 55.4px !important;
+
+			padding: 0;
+			border-radius: 4px;
+			margin: 0;
+			padding: 0 32px 0 23px;
+			font-size: 20px;
+			line-height: 24px;
+			&::placeholder {
+				color: #b0b0b0 !important;
+			}
+		}
+		.suggestions-wrapper {
+			font-size: 20px;
+			line-height: 24px;
+			color: $textColor;
+		}
+		.suggestions-highlighting {
+			background: transparent;
+			font-weight: 700;
+			cursor: pointer;
+		}
+
+		.addAddress {
+			display: flex;
+			width: 100%;
+			height: 20px;
+			content: "";
+			transition: 0.3s;
+			position: relative;
+			margin: -20px 0 0 0;
+			&:hover {
+				height: 95.4px;
+				margin: -20px 0 0 0;
+			}
+
+			.addButton {
+				display: block;
+				width: 55.4px;
+				height: 56.4px;
+				border: 1px solid $passiveBlue;
+				border-radius: 4px;
+				position: absolute;
+				top: 46.6px;
+				left: 0%;
+				transform: translateY(-50%);
+				content: "";
+				background: $passiveBlue;
+				cursor: pointer;
+				transition: 0.3s;
+
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					width: 26px;
+					height: 3px;
+					background: $lightBlue;
+					transition: 0.3s;
+					pointer-events: none;
+				}
+				&:before {
+					content: "";
+					display: block;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%) rotate(90deg);
+					width: 26px;
+					height: 3px;
+					background: $lightBlue;
+					transition: 0.3s;
+					pointer-events: none;
+				}
+			}
+		}
+		.addAddress:hover > .addButton {
+			width: 100%;
+		}
+		.addAddress:hover > .addButton:before,
+		.addAddress:hover > .addButton:after {
+			background: $blue;
+		}
+
+		.btn {
+			width: calc(100% - 75.4px);
+			height: 55.4px;
+			border: 1px solid $blue;
+			border-radius: 4px;
+			background: $blue;
+			color: #fff;
+			cursor: pointer;
+			transition: 0.3s;
+			font-size: 20px;
+			padding: 0 30px 0 23px;
+			margin: 0;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			position: absolute;
+			right: 0;
+			&:hover {
+				background: transparent;
+				color: $blue;
+			}
+			&:hover:before,
+			&:hover:after {
+				background: $blue;
+			}
+			&:focus {
+				outline: none;
+			}
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 43%;
+				right: 40px;
+				transform: translateY(-50%) rotate(45deg);
+				width: 13px;
+				height: 3px;
+				background: $lightBlue;
+				transition: 0.3s;
+				pointer-events: none;
+			}
+			&:before {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 57%;
+				right: 40px;
+				transform: translateY(-50%) rotate(-45deg);
+				width: 13px;
+				height: 3px;
+				background: $lightBlue;
+				transition: 0.3s;
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+.MuiOutlinedInput-root {
+	background: $passiveBlue !important;
+	width: 100%;
+	font-size: 20px !important;
+	height: 55.4px !important;
+}
+
+.phoneInput {
+	margin: 0 0 20px 0 !important;
+	label {
+		color: #b0b0b0 !important;
+	}
+}
+
+.MuiPopover-root {
+	z-index: 9999 !important;
+	background: rgba(255, 255, 255, 0.95) !important;
+	transition: 0.3s;
+}
+
+.MuiPaper-elevation8 {
+	box-shadow: none !important;
+}
+
+.Mui-selected {
+	background: transparent !important;
+	&:hover {
+		background: rgba(0, 0, 0, 0.04) !important;
+	}
+}
+
+.MuiOutlinedInput-input {
+	color: $blue !important;
+}
+
+.MuiFormLabel-filled {
+	color: transparent !important;
+}
+
+.MuiSelect-selectMenu {
+	height: 55.4px !important;
+	display: flex !important;
+	align-items: center !important;
+}

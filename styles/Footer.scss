@@ -1,0 +1,52 @@
+@import "Vars.scss";
+
+.footer {
+	width: 100%;
+	background: $blue;
+	.container {
+		padding-top: 100px;
+		padding-bottom: 65px;
+		display: flex;
+		flex-direction: row;
+		.leftLinks {
+			width: 50%;
+			display: flex;
+			flex-direction: column;
+			.nav-link {
+				color: $white;
+				font-size: 20px;
+				line-height: 24px;
+				margin-bottom: 16px;
+			}
+			.appLinks {
+				margin-top: 40px;
+				display: flex;
+				.android {
+					margin-top: -10px;
+					margin-left: 20px;
+				}
+			}
+		}
+		.rightLinks {
+			width: 50%;
+
+			.paymentLinks {
+				display: flex;
+				text-align: right;
+				align-items: center;
+				justify-content: flex-end;
+				svg {
+					display: block;
+					margin-left: 40px;
+				}
+				.paykeeper {
+					display: block;
+					content: "";
+					width: 130px;
+					height: 32px;
+					background: url("../assets/img/PayKeeper.png");
+				}
+			}
+		}
+	}
+}

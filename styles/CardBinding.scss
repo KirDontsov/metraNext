@@ -1,0 +1,62 @@
+@import "Vars.scss";
+
+.cardBindingWrapper {
+	margin-top: 85px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	padding: 110px 100px;
+	background: $grayBg;
+	.col {
+		width: 50%;
+		h2,
+		h1 {
+			font-weight: 500;
+			font-size: 70px;
+			line-height: 71px;
+			margin-bottom: 52px;
+		}
+		p {
+			font-size: 20px;
+			line-height: 147.52%;
+			margin-bottom: 60px;
+		}
+		a.nav-link {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			width: 170px;
+			height: 55.4px;
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 24px;
+			position: relative;
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 45%;
+				right: 40px;
+				transform: translateY(-50%) rotate(45deg);
+				width: 13px;
+				height: 3px;
+				background: $textColor;
+				transition: 0.3s;
+				pointer-events: none;
+			}
+			&:before {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 60%;
+				right: 40px;
+				transform: translateY(-50%) rotate(-45deg);
+				width: 13px;
+				height: 3px;
+				background: $textColor;
+				transition: 0.3s;
+				pointer-events: none;
+			}
+		}
+	}
+}

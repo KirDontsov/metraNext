@@ -1,0 +1,47 @@
+@import "Vars.scss";
+
+.shutter.active {
+	position: fixed;
+	top: 0;
+	left: -100%;
+	right: 0;
+	bottom: 0;
+	width: 0;
+	height: 100vh;
+	z-index: 9999;
+
+	display: block;
+	content: "";
+
+	background: $darkGreen;
+	animation: appearing 1s ease;
+	.logo {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 229px;
+		height: 76px;
+		margin: 20px 0 25px 0;
+		background: url("../assets/img/logo.png") 50% 50% / contain no-repeat;
+		color: transparent;
+		&:hover {
+			color: transparent;
+		}
+	}
+}
+
+@keyframes appearing {
+	0% {
+		width: 0;
+		left: 0;
+	}
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}

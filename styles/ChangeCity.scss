@@ -1,0 +1,95 @@
+@import "Vars.scss";
+
+.changeCity {
+	width: 100%;
+	height: 55.4px;
+	font-size: 20px !important;
+	line-height: 24px !important;
+	position: relative;
+	&:before {
+		position: absolute;
+		top: 50%;
+		right: 40px;
+		transform: translateX(-8px) rotate(45deg);
+		content: "";
+		display: block;
+		background: #a3b7ff;
+		width: 13px;
+		height: 3px;
+		z-index: 10;
+		transition: 0.3s;
+		pointer-events: none;
+	}
+	&:after {
+		position: absolute;
+		top: 50%;
+		right: 40px;
+		transform: rotate(-45deg);
+		content: "";
+		display: block;
+		background: #a3b7ff;
+		width: 13px;
+		height: 3px;
+		z-index: 10;
+		transition: 0.3s;
+		pointer-events: none;
+	}
+}
+.changeCity:hover:before,
+.changeCity:hover:after {
+	background: $blue;
+}
+
+// .MuiInputLabel-outlined {
+// 	background: #fff !important;
+// 	padding: 0 5px !important;
+// }
+
+.MuiFormLabel-root {
+	font-family: "TT Norms", sans-serif !important;
+	font-size: 20px !important;
+	color: $blue !important;
+}
+
+.MuiSelect-icon.MuiSelect-iconOutlined {
+	display: none !important;
+}
+
+.MuiSelect-select {
+	background: #eef2f4 !important;
+}
+
+.MuiSelect-select:focus {
+	background: #eef2f4 !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+	color: $blue !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+	border: 1px solid transparent !important;
+}
+// .MuiInputBase-root.MuiOutlinedInput-root.Mui-focused.Mui-focused.MuiInputBase-formControl {
+// 	border: 1px solid #f00 !important;
+// }
+
+// .MuiSelect-root.MuiSelect-select.MuiSelect-selectMenu.MuiSelect-outlined.MuiInputBase-input.MuiOutlinedInput-input {
+// 	border: 1px solid #f00 !important;
+// }
+
+.MuiOutlinedInput-input {
+	padding: 0 !important;
+}
+
+.MuiInputLabel-outlined {
+	padding-left: 8px !important;
+}
+
+.MuiOutlinedInput-input {
+	padding-left: 23px !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+	border-color: transparent !important;
+}

@@ -1,0 +1,18 @@
+@import "App.scss";
+@import "Nav.scss";
+@import "Footer.scss";
+@import "../node_modules/react-lazy-load-image-component/src/effects/blur.css";
+@import "Burger.scss";
+@import "Fonts.scss";
+@import "ChangeCity.scss";
+@import "Map.scss";
+@import "Quiz.scss";
+@import "Benefits.scss";
+@import "CardBinding.scss";
+// @import "Shutter.scss";
+@import "Vars.scss";
+
+// pages
+@import "./pages/ForDrivers.scss";
+@import "./pages/Home.scss";
+@import "./pages/CardBinding.scss";
