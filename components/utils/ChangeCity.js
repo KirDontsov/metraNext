@@ -15,25 +15,25 @@ class ChangeCity extends Component {
 				this.props.setLatitude(44.561141);
 				this.props.setLongitude(38.076809);
 				this.props.setZoom(14);
-				this.props.setQuery1("г. Геленджик,");
-				this.props.setQuery2("г. Геленджик,");
-				this.props.setQuery3("г. Геленджик,");
+				// this.props.setQuery1("г. Геленджик,");
+				// this.props.setQuery2("г. Геленджик,");
+				// this.props.setQuery3("г. Геленджик,");
 				break;
 			case 20:
 				this.props.setLatitude(44.723912);
 				this.props.setLongitude(37.768974);
 				this.props.setZoom(13);
-				this.props.setQuery1("г. Новороссийск,");
-				this.props.setQuery2("г. Новороссийск,");
-				this.props.setQuery3("г. Новороссийск,");
+				// this.props.setQuery1("г. Новороссийск,");
+				// this.props.setQuery2("г. Новороссийск,");
+				// this.props.setQuery3("г. Новороссийск,");
 				break;
 			case 30:
 				this.props.setLatitude(46.711524);
 				this.props.setLongitude(38.276451);
 				this.props.setZoom(14);
-				this.props.setQuery1("г. Ейск,");
-				this.props.setQuery2("г. Ейск,");
-				this.props.setQuery3("г. Ейск,");
+				// this.props.setQuery1("г. Ейск,");
+				// this.props.setQuery2("г. Ейск,");
+				// this.props.setQuery3("г. Ейск,");
 				break;
 		}
 	};

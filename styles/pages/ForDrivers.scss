@@ -1,19 +1,25 @@
 @import "../Vars.scss";
 
 .container.forDrivers {
-  display: flex;
-  flex-direction: row;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+	display: flex;
+	flex-direction: row;
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
+	.Quiz.forDrivers {
+		.btn {
+			width: 100%;
+		}
+	}
 }
 
 .heroBanner {
-  width: 737px;
-  height: 505px;
-  object-fit: cover;
-  margin-bottom: 115px;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+	width: 737px;
+	height: 505px;
+	object-fit: cover;
+	object-position: 50% 0;
+	margin-bottom: 115px;
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 }

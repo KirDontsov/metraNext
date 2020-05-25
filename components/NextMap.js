@@ -22,14 +22,32 @@ const markerIcon = L.icon({
 });
 
 class NextMap extends Component {
-	state = { cars: [] };
+	// state = { cars: [] };
+
 	request(that) {
 		const { setItems } = that.props;
 		axios.get("http://taxi.tools:8000/cabsformetrasite").then(({ data }) => {
 			const cars = values(data.carsList);
-			this.setState(prevState => ({ cars: update(prevState.cars, { $set: cars }) }));
-			setItems(this.state.cars);
+			// this.setState(prevState => ({ cars: update(prevState.cars, { $set: cars }) }));
 
+			const newCars = [];
+			for (let i = 0; i < cars.length; i++) {
+				const car = cars[i];
+				if (car.CabSN === null) continue;
+				const newCar = {
+					id: car.CabSN,
+					cabSN: car.CabSN,
+					AllowSelect: car.AllowSelect,
+					CarColor: car.CarColor,
+					CarModel: car.CarModel,
+					course: car.course,
+					latitude: car.latitude,
+					longitude: car.longitude
+				};
+				newCars.push(newCar);
+			}
+			console.log(newCars);
+			setItems(newCars);
 			setTimeout(() => {
 				that.request(that);
 				this.setPath();
@@ -55,7 +73,7 @@ class NextMap extends Component {
 			return "Загрузка...";
 		} else {
 			// console.log(this.state.cars);
-			return this.state.cars.map((item, i) => {
+			return this.props.items.map((item, i) => {
 				let pos = [item.latitude, item.longitude];
 				return (
 					<RotatedMarker key={i} position={pos} icon={markerIcon} rotationAngle={item.course} rotationOrigin={"center"}>

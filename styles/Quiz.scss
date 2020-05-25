@@ -91,7 +91,7 @@
 			font-size: 20px;
 			line-height: 24px;
 			&::placeholder {
-				color: #b0b0b0 !important;
+				color: $lightBlue !important;
 			}
 		}
 		.suggestions-wrapper {
@@ -132,6 +132,11 @@
 				background: $passiveBlue;
 				cursor: pointer;
 				transition: 0.3s;
+
+				&:hover ~ .addAddress {
+					height: 95.4px;
+					margin: -20px 0 0 0;
+				}
 
 				&:after {
 					content: "";
@@ -225,49 +230,49 @@
 			}
 		}
 	}
-}
 
-.MuiOutlinedInput-root {
-	background: $passiveBlue !important;
-	width: 100%;
-	font-size: 20px !important;
-	height: 55.4px !important;
-}
-
-.phoneInput {
-	margin: 0 0 20px 0 !important;
-	label {
-		color: #b0b0b0 !important;
+	.MuiOutlinedInput-root {
+		background: $passiveBlue !important;
+		width: 100%;
+		font-size: 20px !important;
+		height: 55.4px !important;
 	}
-}
 
-.MuiPopover-root {
-	z-index: 9999 !important;
-	background: rgba(255, 255, 255, 0.95) !important;
-	transition: 0.3s;
-}
-
-.MuiPaper-elevation8 {
-	box-shadow: none !important;
-}
-
-.Mui-selected {
-	background: transparent !important;
-	&:hover {
-		background: rgba(0, 0, 0, 0.04) !important;
+	.phoneInput {
+		margin: 0 0 20px 0 !important;
+		label {
+			color: #b0b0b0 !important;
+		}
 	}
-}
 
-.MuiOutlinedInput-input {
-	color: $blue !important;
-}
+	.MuiPopover-root {
+		z-index: 9999 !important;
+		background: rgba(255, 255, 255, 0.95) !important;
+		transition: 0.3s;
+	}
 
-.MuiFormLabel-filled {
-	color: transparent !important;
-}
+	.MuiPaper-elevation8 {
+		box-shadow: none !important;
+	}
 
-.MuiSelect-selectMenu {
-	height: 55.4px !important;
-	display: flex !important;
-	align-items: center !important;
+	.Mui-selected {
+		background: transparent !important;
+		&:hover {
+			background: rgba(0, 0, 0, 0.04) !important;
+		}
+	}
+
+	.MuiOutlinedInput-input {
+		color: $blue !important;
+	}
+
+	.MuiFormLabel-filled {
+		color: transparent !important;
+	}
+
+	.MuiSelect-selectMenu {
+		height: 55.4px !important;
+		display: flex !important;
+		align-items: center !important;
+	}
 }

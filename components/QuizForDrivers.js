@@ -49,7 +49,7 @@ export class Quiz extends Component {
 		console.log(this.props);
 		return (
 			<ThemeProvider theme={theme}>
-				<div className="Quiz">
+				<div className="Quiz forDrivers">
 					<h2 className="dark">
 						Приятно, <br />
 						когда вместе<span>!</span>
@@ -62,7 +62,8 @@ export class Quiz extends Component {
 							name="phone"
 							mask="+7 (999) 999-99-99"
 							// component={MaskInput}
-							formLabel="Телефон"
+							// formLabel="Телефон"
+							placeholder="Телефон"
 							type="text"
 							value={values.phone}
 							onChange={e => this.props.setPhone(e.currentTarget.value)}
@@ -75,9 +76,9 @@ export class Quiz extends Component {
 							fullWidth={true}
 							required
 							variant="outlined"
-							label="Email"
+							// label="Email"
 							className="phoneInput"
-							// placeholder="Email"
+							placeholder="Email"
 						/>
 						{values.email.length !== 0 && !values.email.includes("@") && (
 							<span className="errorMessage">Введен некорректный адрес почты</span>

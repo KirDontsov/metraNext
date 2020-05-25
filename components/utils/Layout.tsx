@@ -14,8 +14,8 @@ export const Layout: FC<Props> = ({ children }) => (
 			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
 			<meta name="apple-itunes-app" content="app-id=1440419621" />
 			<meta name="google-play-app" content="app-id=tools.taxi.pickup" />
-			{/* <link rel="icon" type="image/x-icon" href={require("../assets/img/logo192.png")} /> */}
-			{/* <link rel="shortcut icon" href="/static/favicon.ico" /> */}
+			<link rel="icon" type="image/x-icon" href={require("../../assets/img/logo.png")} />
+			<link rel="shortcut icon" href="/static/favicon.ico" />
 		</Head>
 
 		{children}

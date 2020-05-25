@@ -134,32 +134,42 @@ export class Quiz extends Component {
 
 	// при клике на инпут ставит город
 
+	// onFocusOne() {
+	// 	if (this.props.city === 10) {
+	// 		this.props.setQuery1("г. Геленджик, ");
+	// 	} else if (this.props.city === 20) {
+	// 		this.props.setQuery1("г. Новороссийск, ");
+	// 	} else if (this.props.city === 30) {
+	// 		this.props.setQuery1("г. Ейск, ");
+	// 	}
+	// }
+	// onFocusTwo() {
+	// 	if (this.props.city === 10) {
+	// 		this.props.setQuery2("г. Геленджик, ");
+	// 	} else if (this.props.city === 20) {
+	// 		this.props.setQuery2("г. Новороссийск, ");
+	// 	} else if (this.props.city === 30) {
+	// 		this.props.setQuery2("г. Ейск, ");
+	// 	}
+	// }
+	// onFocusThree() {
+	// 	if (this.props.city === 10) {
+	// 		this.props.setQuery3("г. Геленджик, ");
+	// 	} else if (this.props.city === 20) {
+	// 		this.props.setQuery3("г. Новороссийск, ");
+	// 	} else if (this.props.city === 30) {
+	// 		this.props.setQuery3("г. Ейск, ");
+	// 	}
+	// }
+
 	onFocusOne() {
-		if (this.props.city === 10) {
-			this.props.setQuery1("г. Геленджик, ");
-		} else if (this.props.city === 20) {
-			this.props.setQuery1("г. Новороссийск, ");
-		} else if (this.props.city === 30) {
-			this.props.setQuery1("г. Ейск, ");
-		}
+		this.props.setQuery1("");
 	}
 	onFocusTwo() {
-		if (this.props.city === 10) {
-			this.props.setQuery2("г. Геленджик, ");
-		} else if (this.props.city === 20) {
-			this.props.setQuery2("г. Новороссийск, ");
-		} else if (this.props.city === 30) {
-			this.props.setQuery2("г. Ейск, ");
-		}
+		this.props.setQuery2("");
 	}
 	onFocusThree() {
-		if (this.props.city === 10) {
-			this.props.setQuery3("г. Геленджик, ");
-		} else if (this.props.city === 20) {
-			this.props.setQuery3("г. Новороссийск, ");
-		} else if (this.props.city === 30) {
-			this.props.setQuery3("г. Ейск, ");
-		}
+		this.props.setQuery3("");
 	}
 
 	// onChangeInput(e) {
@@ -193,9 +203,9 @@ export class Quiz extends Component {
 			phone,
 			comment
 		} = this.props;
-		const firstAddressQuery = JSON.stringify(firstAddress.value, 0, 2);
-		const secondAddressQuery = JSON.stringify(secondAddress.value, 0, 2);
-		const additionalAddressQuery = JSON.stringify(additionalAddress.value, 0, 2);
+		const firstAddressQuery = firstAddress.value;
+		const secondAddressQuery = secondAddress.value;
+		const additionalAddressQuery = additionalAddress.value;
 
 		return (
 			<div className="Quiz">
@@ -217,9 +227,11 @@ export class Quiz extends Component {
 						hint={"Выберите город, улицу и номер дома"}
 						placeholder={"Откуда"}
 						count={5}
-						minChars={5}
+						minChars={4}
 						restrictValue={true}
 						query={firstAddressQuery === undefined || null || "" ? query1 : firstAddressQuery}
+						eceivePropsBehaveLikeOnChange={true}
+						deferRequestBy={300}
 					/>
 					<DadataSuggestions
 						token="d19c6d0b94e64b21d8168f9659f64f7b8c1acd1f"
@@ -229,8 +241,10 @@ export class Quiz extends Component {
 						hint={"Выберите город, улицу и номер дома"}
 						placeholder={"Куда"}
 						count={5}
-						minChars={5}
+						minChars={4}
 						query={secondAddressQuery === undefined || null || "" ? query2 : secondAddressQuery}
+						eceivePropsBehaveLikeOnChange={true}
+						deferRequestBy={300}
 					/>
 
 					{this.props.additionalInput ? (
@@ -242,8 +256,10 @@ export class Quiz extends Component {
 							hint={"Выберите город, улицу и номер дома"}
 							placeholder={"Дополнительный адрес"}
 							count={5}
-							minChars={5}
+							minChars={4}
 							query={additionalAddressQuery === undefined || null || "" ? query3 : additionalAddressQuery}
+							eceivePropsBehaveLikeOnChange={true}
+							deferRequestBy={300}
 						/>
 					) : (
 						<div className="addAddress" onClick={() => this.addInput()}>
@@ -326,7 +342,7 @@ const mapDispatch = dispatch => ({
 	setQuery3: dispatch.quiz.setQuery3,
 	setLatitude: dispatch.city.setLatitude,
 	setLongitude: dispatch.city.setLongitude,
-	setAdditionalInput: dispatch.city.setAdditionalInput
+	setAdditionalInput: dispatch.quiz.setAdditionalInput
 });
 
 export default connect(
