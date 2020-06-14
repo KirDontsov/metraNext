@@ -50,10 +50,10 @@ export class Quiz extends Component {
 		return (
 			<ThemeProvider theme={theme}>
 				<div className="Quiz forDrivers">
-					<h2 className="dark">
+					<h1 className="dark">
 						Приятно, <br />
 						когда вместе<span>!</span>
-					</h2>
+					</h1>
 
 					<div className="quizForm">
 						<p className="quizText">Станьте водителем-партнером</p>

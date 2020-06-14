@@ -209,10 +209,10 @@ export class Quiz extends Component {
 
 		return (
 			<div className="Quiz">
-				<h2 className="dark">
+				<h1 className="dark">
 					Приятно, <br />
 					когда вместе<span>!</span>
-				</h2>
+				</h1>
 				<div className="quizForm">
 					<p className="quizText">Рассчитайте стоимость поездки</p>
 					<ChangeCity />

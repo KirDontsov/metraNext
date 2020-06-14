@@ -11,6 +11,9 @@
 			width: 100%;
 			margin-bottom: 115px;
 			height: 90vh;
+			@media (max-width: 425px) {
+				height: 50vh;
+			}
 		}
 	}
 }

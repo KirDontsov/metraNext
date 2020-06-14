@@ -7,8 +7,19 @@
 	flex-direction: row;
 	padding: 110px 100px;
 	background: $grayBg;
+	@media (max-width: 768px) {
+		width: 117%;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 110px 30px;
+		flex-direction: column;
+	}
 	.col {
 		width: 50%;
+		@media (max-width: 768px) {
+			width: 100%;
+		}
 		h2,
 		h1 {
 			font-weight: 500;
@@ -31,6 +42,9 @@
 			font-size: 20px;
 			line-height: 24px;
 			position: relative;
+			@media (max-width: 768px) {
+				margin-bottom: 30px;
+			}
 			&:after {
 				content: "";
 				display: block;
@@ -57,6 +71,9 @@
 				transition: 0.3s;
 				pointer-events: none;
 			}
+		}
+		svg {
+			width: 140%;
 		}
 	}
 }

@@ -3,21 +3,39 @@
 .footer {
 	width: 100%;
 	background: $blue;
+	@media (max-width: 768px) {
+		width: 117%;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0 30px;
+		margin-top: -50px;
+	}
 	.container {
 		padding-top: 100px;
 		padding-bottom: 65px;
 		display: flex;
 		flex-direction: row;
+		@media (max-width: 768px) {
+			flex-direction: column;
+		}
 		.leftLinks {
 			width: 50%;
 			display: flex;
 			flex-direction: column;
+			@media (max-width: 768px) {
+				width: 100%;
+			}
 			.nav-link {
 				color: $white;
 				font-size: 20px;
 				line-height: 24px;
 				margin-bottom: 16px;
+				&.active:before {
+					display: none;
+				}
 			}
+
 			.appLinks {
 				margin-top: 40px;
 				display: flex;
@@ -29,15 +47,29 @@
 		}
 		.rightLinks {
 			width: 50%;
+			@media (max-width: 768px) {
+				width: 100%;
+				margin-top: 30px;
+			}
 
 			.paymentLinks {
 				display: flex;
 				text-align: right;
 				align-items: center;
 				justify-content: flex-end;
+				@media (max-width: 768px) {
+					width: 100%;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+				}
 				svg {
 					display: block;
 					margin-left: 40px;
+					@media (max-width: 768px) {
+						margin-left: 0;
+						margin-bottom: 30px;
+					}
 				}
 				.paykeeper {
 					display: block;
@@ -45,6 +77,10 @@
 					width: 130px;
 					height: 32px;
 					background: url("../assets/img/PayKeeper.png");
+					@media (max-width: 768px) {
+						margin-left: 0;
+						margin-bottom: 30px;
+					}
 				}
 			}
 		}
