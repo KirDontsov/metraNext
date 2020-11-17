@@ -1,58 +1,79 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Link from "./Link";
-// import { connect } from "react-redux";
-// import { iRootState, Dispatch } from "../../shared/store";
+import { connect } from "react-redux";
+import { iRootState } from "../../shared/store";
 
-// interface NavProps extends Partial<ReturnType<typeof mapState>>, Partial<ReturnType<typeof mapDispatch>> {
-// 	slide?: any;
-// }
+interface NavProps extends Partial<ReturnType<typeof mapState>> {
+  city?: any;
+}
 
-export const Nav: FC = props => {
-	// const onClick = () => {
-	// 	props.slide(true);
-	// 	scrollToTop();
-	// };
-	// const scrollToTop = () => {
-	// 	let div;
-	// 	if (div !== null) {
-	// 		div = document.querySelector(".wrapper");
-	// 		div!.scrollTop = 0;
-	// 	}
-	// };
-	return (
-		<div className="nav-wrapper">
-			<div className="center nav__bot">
-				<a className="nav-link logo" href="/" />
-				<nav>
-					<Link activeClassName="active" href="/">
-						<a className="nav-link">Для клиентов</a>
-					</Link>
-					<Link activeClassName="active" href="/for-drivers">
-						<a className="nav-link">Для водителей</a>
-					</Link>
-				</nav>
-				<div className="rightNav">
-					{/* <a href="tel:+79181233333" className="phone">
-          +7 (918) 123-33-33
-        </a> */}
-					<a href="tel:+78614133333" className="phone">
-						+7 (861-41) 3-33-33
-					</a>
-				</div>
-			</div>
-		</div>
-	);
+const cityType = {
+  gel: 10,
+  novoros: 20,
+  yeisk: 30,
 };
 
-// const mapState = (state: iRootState) => ({
-// 	addClass: state.shutter.addClass
-// });
+const Nav: FC<NavProps> = (props) => {
+  const { city } = props;
+  const [currentCity, setCurrentCity] = useState(10);
+
+  useEffect(() => {
+    setCurrentCity(city || 10);
+  }, [city]);
+
+  console.log(props);
+
+  const renderPhoneByCity = (currentCity: number) => {
+    if (currentCity === cityType.gel) {
+      return (
+          <a href="tel:+78614155555" className="phone">
+            +7 (861-41) 5-55-55
+          </a>
+      );
+    } else if (currentCity === cityType.novoros) {
+      return (
+          <a href="tel:+78613235555" className="phone">
+            +7 (861-32) 3-55-55
+          </a>
+      );
+    } else if (currentCity === cityType.yeisk) {
+      return (
+          <a href="tel:+78617610111" className="phone">
+            +7 (861-7) 610-111
+          </a>
+      );
+    }
+  };
+
+  return (
+    <div className="nav-wrapper">
+      <div className="center nav__bot">
+        <a className="nav-link logo" href="/" />
+        <nav>
+          <Link activeClassName="active" href="/">
+            <a className="nav-link">Для клиентов</a>
+          </Link>
+          <Link activeClassName="active" href="/for-drivers">
+            <a className="nav-link">Для водителей</a>
+          </Link>
+        </nav>
+        <div className="rightNav">
+          {renderPhoneByCity(currentCity)}
+          {/*<a href="tel:+78614133333" className="phone">*/}
+          {/*  +7 (861-41) 3-33-33*/}
+          {/*</a>*/}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const mapState = (state: iRootState) => ({
+  city: state.city.city,
+});
 
 // const mapDispatch = (dispatch: Dispatch) => ({
-// 	slide: dispatch.shutter.slide
+//   slide: dispatch.city.setCity,
 // });
 
-// export default connect(
-// 	mapState as any,
-// 	mapDispatch as any
-// )(Nav);
+export default connect(mapState as any)(Nav);

@@ -1,5 +1,5 @@
 import React from "react";
 
 export const PayKeeper = () => {
-	return <div className="paykeeper" />;
+  return <div className="paykeeper" />;
 };
