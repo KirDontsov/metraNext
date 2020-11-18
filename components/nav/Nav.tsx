@@ -32,15 +32,16 @@ const Nav: FC<NavProps> = (props) => {
       );
     } else if (currentCity === cityType.novoros) {
       return (
-          <a href="tel:+78613235555" className="phone">
-            +7 (861-32) 3-55-55
+          <a href="tel:+78617610111" className="phone">
+            +7 (861-7) 610-111
           </a>
       );
     } else if (currentCity === cityType.yeisk) {
       return (
-          <a href="tel:+78617610111" className="phone">
-            +7 (861-7) 610-111
+          <a href="tel:+78613235555" className="phone">
+            +7 (861-32) 3-55-55
           </a>
+
       );
     }
   };
@@ -59,9 +60,6 @@ const Nav: FC<NavProps> = (props) => {
         </nav>
         <div className="rightNav">
           {renderPhoneByCity(currentCity)}
-          {/*<a href="tel:+78614133333" className="phone">*/}
-          {/*  +7 (861-41) 3-33-33*/}
-          {/*</a>*/}
         </div>
       </div>
     </div>
@@ -71,9 +69,5 @@ const Nav: FC<NavProps> = (props) => {
 const mapState = (state: iRootState) => ({
   city: state.city.city,
 });
-
-// const mapDispatch = (dispatch: Dispatch) => ({
-//   slide: dispatch.city.setCity,
-// });
 
 export default connect(mapState as any)(Nav);
