@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import QuizForDrivers from "../components/QuizForDrivers";
 import LazyImage from "../components/utils/LazyImage";
@@ -6,13 +6,13 @@ import { Layout } from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";
 import Head from "next/head";
 import Benefits from "../components/Benefits";
-import { ForDriversText } from "../components/ForDriversText";
+import { ForDriversText } from "../components/content/ForDriversText";
 
 const title = "Стать водителем Такси Метра | Подключение к Такси Метра";
 const description =
   "Подключение к заказам Такси Метра. Работа в Такси Метра. Низкие комиссии";
 
-const ForDrivers = () => (
+const ForDrivers: FC = () => (
   <Layout>
     <Head>
       <title>{title}</title>

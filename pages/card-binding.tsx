@@ -1,15 +1,15 @@
-import React from "react";
+import React, {FC} from "react";
 import { Layout } from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";
 import { CardBinding } from "../components/CardBinding";
-import { CardBindingText } from "../components/CardBindingText";
+import { CardBindingText } from "../components/content/CardBindingText";
 import Head from "next/head";
 
 const title = "Оплата картой Такси Метра";
 const description =
   "Оплата картой Такси Метра. Быстрый и удобный способ оплаты";
 
-const CardBindingPage = () => (
+const CardBindingPage: FC = () => (
   <Layout>
     <Head>
       <title>{title}</title>

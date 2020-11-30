@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import LazyImage from "../components/utils/LazyImage";
 import { Layout } from "../components/utils/Layout";
@@ -8,7 +8,7 @@ import Head from "next/head";
 const title = "Публичная оферта Такси Метра";
 const description = "Публичная оферта Такси Метра.";
 
-const publicOffer = () => (
+const publicOffer: FC = () => (
   <Layout>
     <Head>
       <title>{title}</title>

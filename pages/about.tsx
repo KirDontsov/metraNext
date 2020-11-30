@@ -1,13 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import LazyImage from "../components/utils/LazyImage";
 import { Layout } from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";
 import Head from "next/head";
+import { AboutText } from "../components/content/About";
+import Benefits from "../components/Benefits";
 
 const title = "О Нас | Такси Метра";
 const description = "О компании Такси Метра. Надежное такси в твоем городе";
 
-const About = () => (
+const About: FC = () => (
   <Layout>
     <Head>
       <title>{title}</title>
@@ -16,12 +18,14 @@ const About = () => (
     <Nav />
     <div className="container web">
       <div className="container about">
+        <AboutText />
         <LazyImage
           className="heroBanner"
-          image={require("./../assets/img/1.jpg")}
+          image={require("./../assets/img/forDrivers.jpg")}
           alt="Стань водителем Таккси Метра"
         />
       </div>
+      <Benefits />
     </div>
   </Layout>
 );

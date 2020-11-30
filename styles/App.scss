@@ -97,6 +97,8 @@ body::-webkit-scrollbar {
 
 h1 {
 	font-size: 70px;
+	font-weight: 500;
+	margin-bottom: 70px;
 	@media (max-width: 768px) {
 		font-size: 20px;
 	}
