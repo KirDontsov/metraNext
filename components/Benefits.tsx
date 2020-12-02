@@ -1,7 +1,7 @@
 import React from "react";
 import LazyImage from "./utils/LazyImage";
 
-const Benefits = () => {
+export const Benefits = () => {
   return (
     <div className="colWrapper">
       <div className="col">
@@ -40,5 +40,3 @@ const Benefits = () => {
     </div>
   );
 };
-
-export default Benefits;

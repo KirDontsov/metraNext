@@ -4,7 +4,7 @@ import { Layout } from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";
 import Head from "next/head";
 import { AboutText } from "../components/content/About";
-import Benefits from "../components/Benefits";
+import { Benefits } from "../components/Benefits";
 
 const title = "О Нас | Такси Метра";
 const description = "О компании Такси Метра. Надежное такси в твоем городе";

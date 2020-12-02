@@ -253,6 +253,13 @@
 		}
 	}
 
+	.contactsInput {
+		margin: 0 0 20px 0 !important;
+		label {
+			color: #b0b0b0 !important;
+		}
+	}
+
 	.MuiPopover-root {
 		z-index: 9999 !important;
 		background: rgba(255, 255, 255, 0.95) !important;

@@ -5,7 +5,7 @@ import LazyImage from "../components/utils/LazyImage";
 import { Layout } from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";
 import Head from "next/head";
-import Benefits from "../components/Benefits";
+import { Benefits } from "../components/Benefits";
 import { ForDriversText } from "../components/content/ForDriversText";
 
 const title = "Стать водителем Такси Метра | Подключение к Такси Метра";
@@ -23,7 +23,7 @@ const ForDrivers: FC = () => (
       <div className="container forDrivers">
         <QuizForDrivers />
         <LazyImage
-          className="heroBanner"
+          className="heroBanner forDrivers"
           image={require("./../assets/img/forDrivers.jpg")}
           alt="Стань водителем Таккси Метра"
         />

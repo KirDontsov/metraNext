@@ -1,11 +1,10 @@
 import React, { FC } from "react";
 import { Layout } from "../components/utils/Layout";
 import dynamic from "next/dynamic";
-import Benefits from "../components/Benefits";
+import { Benefits } from "../components/Benefits";
 import Nav from "../components/nav/Nav";
 import { CardBinding } from "../components/CardBinding";
 import Head from "next/head";
-
 
 const DynamicMap = dynamic(() => import("../components/NextMap"), {
   ssr: false,

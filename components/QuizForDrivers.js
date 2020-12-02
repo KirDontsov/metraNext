@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { useCallback, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import MaskInput from "./utils/MaskInput";
 import { connect } from "react-redux";
-// import ChangeCity from "../components/ChangeCity";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import axios from "axios";
 
 // const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 
@@ -13,104 +13,177 @@ const theme = createMuiTheme({
   },
 });
 
-export class Quiz extends Component {
-  // получение координат и построение маршрута
-  handleClick(e, that) {
-    // отправка fetch (получение маршрута)
-    // fetch("http://webclient.metrataxi.ru:8000/metrasite", {
-    //   // credentials: "same-origin",
-    //   method: "POST",
-    //   body: formData
-    //   // headers: new Headers({
-    //   // 	"Content-Type": "application/json"
-    //   // })
-    // }).then(response => {
-    //   response.json().then(data => {
-    //     console.log("Successful", data);
-    //     this.props.setRes(data);
-    //   });
-    // });
-  }
+const validateAndReformatPhone = (phone) => {
+  const pattern = RegExp("[^\\d]", "g");
+  return phone.replace(pattern, "");
+};
 
-  button() {
-    return (
-      <div className="btn" onClick={(e) => this.handleClick(e, this)}>
-        Отправить
-      </div>
-    );
-  }
+const Quiz = (props) => {
+  const {
+    email,
+    phone,
+    firstName,
+    lastName,
+    setRes,
+    setPhone,
+    setFirstName,
+    setLastName,
+  } = props;
+  const [canSend, setCanSend] = useState(false);
 
-  render() {
-    const { email, phone } = this.props;
-    const values = {
-      email,
-      phone,
-    };
-    console.log(this.props);
-    return (
-      <ThemeProvider theme={theme}>
-        <div className="Quiz forDrivers">
-          <h1 className="dark">
-            Приятно, <br />
-            когда вместе<span>!</span>
-          </h1>
+  // отправка контактов водителя
+  const onSubmitClick = useCallback(async () => {
+    if (phone && firstName && lastName) {
+      const phoneNumberForRequest = validateAndReformatPhone(phone);
+      let headers = new Headers({
+        Accept: "application/json, text/plain, */*",
+        "Accept-Encoding": "gzip, deflate",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+        Host: "taxi.tools:8000",
+        Origin: "http://localhost:3000",
+        Pragma: "no-cache",
+        Referer: "http://localhost:3000/",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
+        drvname: `${firstName} ${lastName}`,
+        drvphone: `${phoneNumberForRequest}`,
+      });
 
-          <div className="quizForm">
-            <p className="quizText">Станьте водителем-партнером</p>
+      // await axios
+      //   .get(
+      //     `http://taxi.tools:8000/metrasitedrvhunter?drvphone=${phoneNumberForRequest}`,
+      //     {
+      //       headers,
+      //     }
+      //   )
+      //   .then(({ data }) => {
+      //     console.log("Successful", data);
+      //   });
 
-            <MaskInput
-              name="phone"
-              mask="+7 (999) 999-99-99"
-              // component={MaskInput}
-              // formLabel="Телефон"
-              placeholder="Телефон"
-              type="text"
-              value={values.phone}
-              onChange={(e) => this.props.setPhone(e.currentTarget.value)}
-              fullWidth={true}
-            />
+      await fetch(
+        `http://taxi.tools:8000/metrasitedrvhunter?drvphone=${phoneNumberForRequest}`,
+        {
+          headers: headers,
+        }
+      ).then((response) => {
+        response.json().then((data) => {
+          console.log("Successful", data);
+          setRes(data);
+        });
+      });
+    } else {
+      return false;
+    }
+  }, [setRes, phone, firstName, lastName]);
 
-            <TextField
-              onChange={(e) => this.props.setEmail(e.currentTarget.value)}
-              value={values.email}
-              fullWidth={true}
-              required
-              variant="outlined"
-              // label="Email"
-              className="phoneInput"
-              placeholder="Email"
-            />
-            {values.email.length !== 0 && !values.email.includes("@") && (
-              <span className="errorMessage">
-                Введен некорректный адрес почты
-              </span>
-            )}
+  const onEnterPhone = useCallback(
+    (e) => {
+      setPhone(e.currentTarget.value);
+    },
+    [setPhone]
+  );
 
-            {this.button()}
-          </div>
+  const onEnterFirstName = useCallback(
+    (e) => {
+      setFirstName(e.currentTarget.value);
+    },
+    [setFirstName]
+  );
 
-          {/* <MaskInput
-          name="phone"
-          mask="+7 (999) 999-99-99"
-          component={MaskInput}
-          type="text"
-          label="Телефон"
-          onChange={e => this.props.setPhone({ phone: e.target.value })}
-        /> */}
+  const onEnterLastName = useCallback(
+    (e) => {
+      setLastName(e.currentTarget.value);
+    },
+    [setFirstName]
+  );
+
+  const changeCanSend = useCallback(() => {
+    setCanSend((prevState) => !prevState);
+  }, []);
+
+  console.log(props);
+  console.log(canSend);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <div className="Quiz forDrivers">
+        <h1 className="dark">
+          Приятно, <br />
+          когда вместе<span>!</span>
+        </h1>
+
+        <div className="quizForm">
+          <p className="quizText">Станьте водителем-партнером</p>
+
+          <TextField
+            onChange={onEnterFirstName}
+            value={firstName}
+            fullWidth={true}
+            required
+            variant="outlined"
+            className="contactsInput"
+            placeholder="Имя*"
+          />
+          <TextField
+            onChange={onEnterLastName}
+            value={lastName}
+            fullWidth={true}
+            required
+            variant="outlined"
+            className="contactsInput"
+            placeholder="Фамилия*"
+          />
+
+          <MaskInput
+            name="phone"
+            mask="+7 (999) 999-99-99"
+            type="text"
+            value={phone}
+            onChange={onEnterPhone}
+            fullWidth={true}
+            placeholder="Телефон*"
+          />
+
+          <TextField
+            onChange={(e) => props.setEmail(e.currentTarget.value)}
+            value={email}
+            fullWidth={true}
+            required
+            variant="outlined"
+            // label="Email"
+            className="contactsInput"
+            placeholder="Email"
+          />
+          {email.length !== 0 && !email.includes("@") && (
+            <span className="errorMessage">
+              Введен некорректный адрес почты
+            </span>
+          )}
+
+          <button className="btn" onClick={onSubmitClick}>
+            Отправить
+          </button>
         </div>
-      </ThemeProvider>
-    );
-  }
-}
+      </div>
+    </ThemeProvider>
+  );
+};
 
 const mapState = (state) => ({
   phone: state.quizForDrivers.phone,
   email: state.quizForDrivers.email,
+  firstName: state.quizForDrivers.firstName,
+  lastName: state.quizForDrivers.lastName,
+  res: state.quizForDrivers.res,
 });
 
 const mapDispatch = (dispatch) => ({
   setPhone: dispatch.quizForDrivers.setPhone,
   setEmail: dispatch.quizForDrivers.setEmail,
+  setFirstName: dispatch.quizForDrivers.setFirstName,
+  setLastName: dispatch.quizForDrivers.setLastName,
+  setRes: dispatch.quizForDrivers.setRes,
 });
 
 export default connect(mapState, mapDispatch)(Quiz);
