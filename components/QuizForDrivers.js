@@ -35,7 +35,7 @@ const Quiz = (props) => {
   const onSubmitClick = useCallback(async () => {
     if (phone && firstName && lastName) {
       const phoneNumberForRequest = validateAndReformatPhone(phone);
-      let headers = new Headers({
+      let headers = {
         Accept: "application/json, text/plain, */*",
         "Accept-Encoding": "gzip, deflate",
         "Cache-Control": "no-cache",
@@ -48,7 +48,7 @@ const Quiz = (props) => {
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
         drvname: `${firstName} ${lastName}`,
         drvphone: `${phoneNumberForRequest}`,
-      });
+      };
 
       // await axios
       //   .get(
