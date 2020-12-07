@@ -35,31 +35,18 @@ const Quiz = (props) => {
   const onSubmitClick = useCallback(async () => {
     if (phone && firstName && lastName) {
       const phoneNumberForRequest = validateAndReformatPhone(phone);
-      let headers = {
-        Accept: "application/json, text/plain, */*",
-        "Accept-Encoding": "gzip, deflate",
-        "Cache-Control": "no-cache",
-        Connection: "keep-alive",
-        Host: "taxi.tools:8000",
-        Origin: "http://localhost:3000",
-        Pragma: "no-cache",
-        Referer: "http://localhost:3000/",
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
-        drvname: `${firstName} ${lastName}`,
-        drvphone: `${phoneNumberForRequest}`,
-      };
 
-      // await axios
-      //   .get(
-      //     `http://taxi.tools:8000/metrasitedrvhunter?drvphone=${phoneNumberForRequest}`,
-      //     {
-      //       headers,
-      //     }
-      //   )
-      //   .then(({ data }) => {
-      //     console.log("Successful", data);
-      //   });
+      await axios
+        .post(`http://taxi.tools:8000/metrasitedrvhunter`, {
+          drvname: `${firstName} ${lastName}`,
+          drvphone: `${phoneNumberForRequest}`,
+        })
+        .then(({ data }) => {
+          console.log("Successful", data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       await fetch(
         `http://taxi.tools:8000/metrasitedrvhunter?drvphone=${phoneNumberForRequest}`,
