@@ -21,13 +21,13 @@ const validateAndReformatPhone = (phone) => {
 const headers = {
   "Content-Type": "application/json;charset=UTF-8",
   "Access-Control-Allow-Origin": "*",
-  Accept: "*/*",
-  "Accept-Encoding": "gzip, deflate",
+  Accept: "application/json, text/plain, */*",
   "Cache-Control": "no-cache",
+  Pragma: "no-cache",
 };
 
 const API_URL = "http://webclient.metrataxi.ru:8000/metrasitedrvhunter";
-const API_URL_TEST = "http://taxi.tools:8000/metrasitedrvhunter";
+// const API_URL_TEST = "http://taxi.tools:8000/metrasitedrvhunter";
 
 const Quiz = (props) => {
   const {
