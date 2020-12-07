@@ -18,6 +18,17 @@ const validateAndReformatPhone = (phone) => {
   return phone.replace(pattern, "");
 };
 
+const headers = {
+  "Content-Type": "application/json;charset=UTF-8",
+  "Access-Control-Allow-Origin": "*",
+  Accept: "*/*",
+  "Accept-Encoding": "gzip, deflate",
+  "Cache-Control": "no-cache",
+};
+
+const API_URL = "http://webclient.metrataxi.ru:8000/metrasitedrvhunter";
+const API_URL_TEST = "http://taxi.tools:8000/metrasitedrvhunter";
+
 const Quiz = (props) => {
   const {
     email,
@@ -37,10 +48,14 @@ const Quiz = (props) => {
       const phoneNumberForRequest = validateAndReformatPhone(phone);
 
       await axios
-        .post(`http://taxi.tools:8000/metrasitedrvhunter`, {
-          drvname: `${firstName} ${lastName}`,
-          drvphone: `${phoneNumberForRequest}`,
-        })
+        .post(
+          API_URL,
+          {
+            drvname: `${firstName} ${lastName}`,
+            drvphone: `${phoneNumberForRequest}`,
+          },
+          { headers: headers }
+        )
         .then(({ data }) => {
           console.log("Successful", data);
         })
@@ -48,17 +63,17 @@ const Quiz = (props) => {
           console.log(error);
         });
 
-      await fetch(
-        `http://taxi.tools:8000/metrasitedrvhunter?drvphone=${phoneNumberForRequest}`,
-        {
-          headers: headers,
-        }
-      ).then((response) => {
-        response.json().then((data) => {
-          console.log("Successful", data);
-          setRes(data);
-        });
-      });
+      // await fetch(
+      //   `http://taxi.tools:8000/metrasitedrvhunter`,
+      //   {
+      //     headers: headers,
+      //   }
+      // ).then((response) => {
+      //   response.json().then((data) => {
+      //     console.log("Successful", data);
+      //     setRes(data);
+      //   });
+      // });
     } else {
       return false;
     }
