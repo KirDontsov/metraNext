@@ -29,7 +29,7 @@ const Quiz = (props) => {
     setFirstName,
     setLastName,
   } = props;
-  const [canSend, setCanSend] = useState(false);
+  // const [canSend, setCanSend] = useState(false);
 
   // отправка контактов водителя
   const onSubmitClick = useCallback(async () => {
@@ -88,9 +88,6 @@ const Quiz = (props) => {
   // const changeCanSend = useCallback(() => {
   //   setCanSend((prevState) => !prevState);
   // }, []);
-
-  console.log(props);
-  console.log(canSend);
 
   return (
     <ThemeProvider theme={theme}>
