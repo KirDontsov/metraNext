@@ -85,9 +85,9 @@ const Quiz = (props) => {
     [setFirstName]
   );
 
-  const changeCanSend = useCallback(() => {
-    setCanSend((prevState) => !prevState);
-  }, []);
+  // const changeCanSend = useCallback(() => {
+  //   setCanSend((prevState) => !prevState);
+  // }, []);
 
   console.log(props);
   console.log(canSend);
