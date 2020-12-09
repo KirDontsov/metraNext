@@ -22,7 +22,7 @@ const Quiz = (props) => {
     setLastName,
   } = props;
   // const [canSend, setCanSend] = useState(false);
-  const [formSent, setFormSent] = useToggleState(true);
+  const [formSent, setFormSent] = useToggleState(false);
   const [code, setCode] = useState("");
   const [codeSent, setCodeSent] = useToggleState(false);
 
