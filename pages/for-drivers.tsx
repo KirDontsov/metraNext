@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import QuizForDrivers from "../components/QuizForDrivers";
+import QuizForDrivers from "../components/QuizForDrivers/QuizForDrivers";
 import LazyImage from "../components/utils/LazyImage";
 import { Layout } from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";

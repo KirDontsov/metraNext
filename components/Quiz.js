@@ -225,10 +225,10 @@ export class Quiz extends Component {
 
     return (
       <div className="Quiz">
-        <h1 className="dark">
+        <h2 className="dark">
           Приятно, <br />
           когда вместе<span>!</span>
-        </h1>
+        </h2>
         <div className="quizForm">
           <p className="quizText">Рассчитайте стоимость поездки</p>
           <ChangeCity />

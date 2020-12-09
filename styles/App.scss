@@ -33,7 +33,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-	width: 0px;
+	width: 0;
 }
 
 .wrapper {
@@ -43,7 +43,7 @@ body::-webkit-scrollbar {
 	height: 102vh;
 
 	&::-webkit-scrollbar {
-		width: 0px;
+		width: 0;
 	}
 
 	@media (max-width: 768px) {
@@ -95,12 +95,23 @@ body::-webkit-scrollbar {
 	position: relative;
 }
 
-h1 {
-	font-size: 70px;
+h1.dark {
+	font-style: normal;
 	font-weight: 500;
-	margin-bottom: 70px;
+	font-size: 70px;
+	line-height: 83px;
+	color: $textColor;
+	margin-bottom: 96px;
+	span {
+		color: $blue;
+	}
 	@media (max-width: 768px) {
-		font-size: 20px;
+		margin-top: 96px;
+		max-width: 100%;
+		@media (max-width: 425px) {
+			font-size: 40px;
+			line-height: 140%;
+		}
 	}
 }
 

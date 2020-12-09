@@ -3,7 +3,7 @@ import React from "react";
 export const ForDriversText = () => {
   return (
     <div className="cardBindingText">
-      <h2>Почему Метра?</h2>
+      <h1 className="dark">Почему Метра<span>?</span></h1>
       <p>Комфортные условия труда</p>
       <p>Работа рядом с домом</p>
       <p>Техническая поддержка 24/7</p>
