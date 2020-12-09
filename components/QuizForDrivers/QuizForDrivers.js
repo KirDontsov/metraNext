@@ -6,7 +6,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import axios from "axios";
 import { useToggleState } from "../utils/useToggleState";
 import { validateAndReformatPhone } from "./utils";
-import { FORM_API_URL, CODE_CHECK_API_URL, theme } from "./constants";
+import { FORM_API_URL, CODE_CHECK_API_URL, theme, headers } from "./constants";
 
 // const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 
