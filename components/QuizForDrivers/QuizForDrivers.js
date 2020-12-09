@@ -22,7 +22,7 @@ const Quiz = (props) => {
     setLastName,
   } = props;
   // const [canSend, setCanSend] = useState(false);
-  const [formSent, setFormSent] = useToggleState(false);
+  const [formSent, setFormSent] = useToggleState(true);
   const [code, setCode] = useState("");
   const [codeSent, setCodeSent] = useToggleState(false);
 
@@ -59,12 +59,13 @@ const Quiz = (props) => {
   const onSendCode = useCallback(async () => {
     if (phone && code) {
       const phoneNumberForRequest = validateAndReformatPhone(phone);
+      const codeForRequest = validateAndReformatPhone(code);
       await axios
         .post(
           CODE_CHECK_API_URL,
           {
             drvphone: `${phoneNumberForRequest}`,
-            code: code,
+            code: codeForRequest,
           },
           { headers: headers }
         )
