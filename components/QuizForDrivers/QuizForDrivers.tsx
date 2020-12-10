@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, FC, ChangeEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import MaskInput from "../utils/MaskInput";
 import { connect } from "react-redux";
@@ -7,13 +7,29 @@ import axios from "axios";
 import { useToggleState } from "../utils/useToggleState";
 import { validateAndReformatPhone } from "./utils";
 import { FORM_API_URL, CODE_CHECK_API_URL, theme, headers } from "./constants";
+import { confirmationCodeEnum } from "./interfaces";
+import { iRootState, Dispatch } from "../../shared/store";
 
 // const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 
-const Quiz = (props) => {
+// @ts-ignore
+interface QuizForDriversProps
+  extends Partial<ReturnType<typeof mapState>>,
+    Partial<ReturnType<typeof mapDispatch>> {
+  email?: string;
+  phone?: string;
+  firstName?: string;
+  lastName?: string;
+  setPhone?: (e: ChangeEvent<HTMLInputElement>) => string;
+  setEmail?: (e: ChangeEvent<HTMLInputElement>) => string;
+  setFirstName?: (e: ChangeEvent<HTMLInputElement>) => string;
+  setLastName?: (e: ChangeEvent<HTMLInputElement>) => string;
+}
+
+const Quiz: FC<QuizForDriversProps> = (props) => {
   const {
     email,
-    phone,
+    // phone,
     firstName,
     lastName,
     setPhone,
@@ -22,10 +38,10 @@ const Quiz = (props) => {
     setLastName,
   } = props;
   // const [canSend, setCanSend] = useState(false);
-  const [formSent, setFormSent] = useToggleState(false);
+  const [formSent, setFormSent] = useToggleState(true);
   const [code, setCode] = useState("");
   const [codeSent, setCodeSent] = useToggleState(false);
-
+  const phone = "+79112395458";
   /**
    * отправка контактов водителя
    */
@@ -58,6 +74,7 @@ const Quiz = (props) => {
    */
   const onSendCode = useCallback(async () => {
     if (phone && code) {
+      console.log(phone, code);
       const phoneNumberForRequest = validateAndReformatPhone(phone);
       const codeForRequest = validateAndReformatPhone(code);
       await axios
@@ -71,7 +88,18 @@ const Quiz = (props) => {
         )
         .then(({ data }) => {
           console.log("Successful", data);
-          setCodeSent();
+          const { confirmationCode } = data;
+          switch (confirmationCode) {
+            case confirmationCodeEnum.REPEAT:
+              console.log("REPEAT");
+              break;
+            case confirmationCodeEnum.SUCCESS:
+              console.log("SUCCESS");
+              setCodeSent();
+              break;
+            default:
+              throw new Error("Ошибка отправки кода");
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -84,21 +112,21 @@ const Quiz = (props) => {
   /** имя */
   const onEnterFirstName = useCallback(
     (e) => {
-      setFirstName(e.currentTarget.value);
+      setFirstName!(e.currentTarget.value);
     },
     [setFirstName]
   );
   /** фамилия */
   const onEnterLastName = useCallback(
     (e) => {
-      setLastName(e.currentTarget.value);
+      setLastName!(e.currentTarget.value);
     },
     [setFirstName]
   );
   /** Email */
   const onEnterEmail = useCallback(
     (e) => {
-      setEmail(e.currentTarget.value);
+      setEmail!(e.currentTarget.value);
     },
     [setEmail]
   );
@@ -106,7 +134,7 @@ const Quiz = (props) => {
   /** телефон */
   const onEnterPhone = useCallback(
     (e) => {
-      setPhone(e.currentTarget.value);
+      setPhone!(e.currentTarget.value);
     },
     [setPhone]
   );
@@ -185,7 +213,7 @@ const Quiz = (props) => {
                 className="contactsInput"
                 placeholder="Email"
               />
-              {email.length !== 0 && !email.includes("@") && (
+              {email!.length !== 0 && !email!.includes("@") && (
                 <span className="errorMessage">
                   Введен некорректный адрес почты
                 </span>
@@ -218,18 +246,18 @@ const Quiz = (props) => {
   );
 };
 
-const mapState = (state) => ({
+const mapState = (state: iRootState) => ({
   phone: state.quizForDrivers.phone,
   email: state.quizForDrivers.email,
   firstName: state.quizForDrivers.firstName,
   lastName: state.quizForDrivers.lastName,
 });
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = (dispatch: Dispatch) => ({
   setPhone: dispatch.quizForDrivers.setPhone,
   setEmail: dispatch.quizForDrivers.setEmail,
   setFirstName: dispatch.quizForDrivers.setFirstName,
   setLastName: dispatch.quizForDrivers.setLastName,
 });
 
-export default connect(mapState, mapDispatch)(Quiz);
+export default connect(mapState as any, mapDispatch as any)(Quiz);
