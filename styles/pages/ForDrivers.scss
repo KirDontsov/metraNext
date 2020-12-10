@@ -23,3 +23,22 @@
 		width: 100%;
 	}
 }
+
+h3.dark {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 83px;
+	color: $textColor;
+	span {
+		color: $blue;
+	}
+	@media (max-width: 768px) {
+		margin-top: 96px;
+		max-width: 100%;
+		@media (max-width: 425px) {
+			font-size: 40px;
+			line-height: 140%;
+		}
+	}
+}

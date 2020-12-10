@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import LazyImage from "./utils/LazyImage";
 
-export const Benefits = () => {
+export const Benefits: FC = () => {
   return (
     <div className="colWrapper">
       <div className="col">

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DadataSuggestions from "react-dadata-suggestions";
 import { connect } from "react-redux";
-import ChangeCity from "../components/utils/ChangeCity";
+import ChangeCity from "./utils/ChangeCity";
 
 // const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 

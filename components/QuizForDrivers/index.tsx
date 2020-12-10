@@ -4,7 +4,7 @@ import MaskInput from "../utils/MaskInput";
 import { connect } from "react-redux";
 import { ThemeProvider } from "@material-ui/core/styles";
 import axios from "axios";
-import { useToggleState } from "../utils/useToggleState";
+import { useToggleState } from "../utils/hooks/useToggleState";
 import { validateAndReformatPhone } from "./utils";
 import { FORM_API_URL, CODE_CHECK_API_URL, theme, headers } from "./constants";
 import { confirmationCodeEnum } from "./interfaces";
@@ -29,7 +29,7 @@ interface QuizForDriversProps
 const Quiz: FC<QuizForDriversProps> = (props) => {
   const {
     email,
-    // phone,
+    phone,
     firstName,
     lastName,
     setPhone,
@@ -38,15 +38,21 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
     setLastName,
   } = props;
   // const [canSend, setCanSend] = useState(false);
-  const [formSent, setFormSent] = useToggleState(true);
+  const [formSent, setFormSent] = useToggleState(false);
   const [code, setCode] = useState("");
-  const [codeSent, setCodeSent] = useToggleState(false);
-  const phone = "+79112395458";
+  const [codeSent, setCodeSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [
+    confirmationCodeFromResponse,
+    setConfirmationCodeFromResponse,
+  ] = useState("");
+
   /**
    * отправка контактов водителя
    */
   const onSubmitClick = useCallback(async () => {
     if (phone && firstName && lastName) {
+      setLoading(true);
       const phoneNumberForRequest = validateAndReformatPhone(phone);
       await axios
         .post(
@@ -54,12 +60,14 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
           {
             drvname: `${firstName} ${lastName}`,
             drvphone: `${phoneNumberForRequest}`,
+            drvemail: email ?? "",
           },
           { headers: headers }
         )
         .then(({ data }) => {
           console.log("Successful", data);
           setFormSent();
+          setLoading(false);
         })
         .catch((error) => {
           console.log(error);
@@ -67,14 +75,14 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
     } else {
       return false;
     }
-  }, [phone, firstName, lastName]);
+  }, [phone, firstName, lastName, setLoading, setFormSent]);
 
   /**
    * отправка кода подтверждения
    */
   const onSendCode = useCallback(async () => {
     if (phone && code) {
-      console.log(phone, code);
+      setLoading(true);
       const phoneNumberForRequest = validateAndReformatPhone(phone);
       const codeForRequest = validateAndReformatPhone(code);
       await axios
@@ -89,17 +97,10 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
         .then(({ data }) => {
           console.log("Successful", data);
           const { confirmationCode } = data;
-          switch (confirmationCode) {
-            case confirmationCodeEnum.REPEAT:
-              console.log("REPEAT");
-              break;
-            case confirmationCodeEnum.SUCCESS:
-              console.log("SUCCESS");
-              setCodeSent();
-              break;
-            default:
-              throw new Error("Ошибка отправки кода");
-          }
+          console.log(confirmationCode);
+          setConfirmationCodeFromResponse(confirmationCode);
+          setCodeSent(true);
+          setLoading(false);
         })
         .catch((error) => {
           console.log(error);
@@ -107,8 +108,9 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
     } else {
       return false;
     }
-  }, [code, setCodeSent]);
+  }, [code, setCodeSent, setConfirmationCodeFromResponse, setLoading]);
 
+  console.log(confirmationCodeFromResponse);
   /** имя */
   const onEnterFirstName = useCallback(
     (e) => {
@@ -144,23 +146,87 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
     setCode(e.currentTarget.value);
   }, []);
 
-  if (codeSent) {
-    return (
-      <ThemeProvider theme={theme}>
-        <div className="Quiz forDrivers">
-          <h1 className="dark">
-            Приятно, <br />
-            когда вместе<span>!</span>
-          </h1>
+  /** ответ сервера в зависимости от кода подтверждения */
+  if (codeSent && confirmationCodeFromResponse) {
+    switch (confirmationCodeFromResponse) {
+      case confirmationCodeEnum.TRUE:
+        return (
+          <ThemeProvider theme={theme}>
+            <div className="Quiz forDrivers">
+              <h2 className="dark">
+                Приятно, <br />
+                когда вместе<span>!</span>
+              </h2>
 
-          <div className="quizForm">
-            <h2 className="dark">
-              Спасибо за регистрацию<span>!</span>
-            </h2>
-          </div>
-        </div>
-      </ThemeProvider>
-    );
+              <div className="quizForm">
+                <h3 className="dark">
+                  Спасибо за регистрацию<span>!</span>
+                </h3>
+                <p>
+                  Ваш запрос отправлен успешно, в ближайшее время с вами
+                  свяжутся по указанному номеру телефона.
+                </p>
+              </div>
+            </div>
+          </ThemeProvider>
+        );
+      case confirmationCodeEnum.REPEAT:
+        return (
+          <ThemeProvider theme={theme}>
+            <div className="Quiz forDrivers">
+              <h2 className="dark">
+                Приятно, <br />
+                когда вместе<span>!</span>
+              </h2>
+
+              <div className="quizForm">
+                <h3 className="dark">
+                  Неверный код<span>!</span>
+                </h3>
+                <p>
+                  Ваш запрос отправлен успешно, но к сожалению Вы ввели неверный
+                  код, попробуйте еще раз.
+                </p>
+                <MaskInput
+                  name="phone"
+                  mask="9 9 9 9 9"
+                  type="text"
+                  value={code}
+                  onChange={onEnterCode}
+                  fullWidth={true}
+                  placeholder="Код*"
+                />
+                <button className="btn" onClick={onSendCode}>
+                  {!loading ? "Отправить" : "Отправка..."}
+                </button>
+              </div>
+            </div>
+          </ThemeProvider>
+        );
+      case confirmationCodeEnum.FALSE:
+        return (
+          <ThemeProvider theme={theme}>
+            <div className="Quiz forDrivers">
+              <h2 className="dark">
+                Приятно, <br />
+                когда вместе<span>!</span>
+              </h2>
+
+              <div className="quizForm">
+                <h3 className="dark">
+                  Неверный код<span>!</span>
+                </h3>
+                <p>
+                  Ваш запрос отклонен, свяжитесь с нами по телефону, для
+                  уточнения информации.
+                </p>
+              </div>
+            </div>
+          </ThemeProvider>
+        );
+      default:
+        throw new Error("Ошибка отправки кода");
+    }
   }
 
   return (
@@ -220,7 +286,7 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
               )}
 
               <button className="btn" onClick={onSubmitClick}>
-                Отправить
+                {!loading ? "Отправить" : "Отправка..."}
               </button>
             </>
           ) : (
@@ -236,7 +302,7 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
                 placeholder="Код*"
               />
               <button className="btn" onClick={onSendCode}>
-                Отправить
+                {!loading ? "Отправить" : "Отправка..."}
               </button>
             </>
           )}

@@ -1,8 +1,9 @@
 export enum confirmationCodeEnum {
-  /** в процессе */
-  PROGRESS = "progress",
+  /** успех */
+  TRUE = "true",
   /** повторить */
   REPEAT = "repeat",
-  /** успех */
-  SUCCESS = "success",
+  /** повторить */
+  FALSE = "false",
+
 }
