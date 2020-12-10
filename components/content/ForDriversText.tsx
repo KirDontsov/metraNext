@@ -1,9 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 
-export const ForDriversText = () => {
+export const ForDriversText: FC = () => {
   return (
     <div className="cardBindingText">
-      <h1 className="dark">Почему Метра<span>?</span></h1>
+      <h1 className="dark">
+        Почему Метра<span>?</span>
+      </h1>
       <p>Комфортные условия труда</p>
       <p>Работа рядом с домом</p>
       <p>Техническая поддержка 24/7</p>

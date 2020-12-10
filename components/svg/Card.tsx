@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 
-export const Card = () => {
+export const Card: FC = () => {
   return (
     <svg
       width="537"

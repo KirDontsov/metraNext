@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 
-export const AboutText = () => {
+export const AboutText: FC = () => {
   return (
     <div className="aboutText">
-      <h1 className="dark">О Нас</h1>
+      <h1 className="dark aboutTitle"><span>О</span> Нас</h1>
       <p>
         Metra такси – диспетчерская служба, оказывающая информационные услуги
         заказа такси.
@@ -17,7 +17,9 @@ export const AboutText = () => {
         для потребителей услуги такси, так и для перевозчиков.
       </p>
       <p>По вопросам предложений, сотрудничества обращаться по телефону:</p>
-        <a className="aboutLink" href="tel:+79010003002">+7 (901) 000-30-02</a>
+      <a className="aboutLink" href="tel:+79010003002">
+        +7 (901) 000-30-02
+      </a>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 /// <reference types="node" />
 
 declare module "react-tilt" {
-	export const Tilt = {} as any;
+  import { ComponentClass, FunctionComponent } from "react";
+  export const Tilt = {} as ComponentClass<P, any> | FunctionComponent<P>;
 }

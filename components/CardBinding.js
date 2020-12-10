@@ -1,18 +1,19 @@
-import React from "react";
+import React, { memo } from "react";
 import Tilt from "react-tilt";
 import Link from "./nav/Link";
-import { Card } from "./Card";
+import { Card } from "./svg/Card";
 
-export const CardBinding = (props) => {
+const CardBinding = (props) => {
+  const { title } = props;
   return (
     <div className="cardBindingWrapper">
       <div className="col">
-        {props.title ? <h1>Привязка карты</h1> : <h2>Привязка карты</h2>}
+        {title ? <h1>Привязка карты</h1> : <h2>Привязка карты</h2>}
         <p>
           Откройте меню приложения и нажмите Привязать карту (или Добавить
           карту).
         </p>
-        {!props.title && (
+        {!title && (
           <Link activeClassName="active" href="/card-binding">
             <a className="nav-link">Подробнее</a>
           </Link>
@@ -25,7 +26,7 @@ export const CardBinding = (props) => {
           style={{ height: 250, width: 250 }}
         >
           <div className="Tilt-inner">
-            {!props.title ? (
+            {!title ? (
               <Link activeClassName="active" href="/card-binding">
                 <a className="cardLink">
                   <Card />
@@ -40,3 +41,5 @@ export const CardBinding = (props) => {
     </div>
   );
 };
+
+export default memo(CardBinding);

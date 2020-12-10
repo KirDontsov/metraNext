@@ -10,7 +10,7 @@
 
 .heroBanner {
   width: 737px;
-  height: 505px;
+  height: 545px;
   object-fit: cover;
   object-position: 50% 0;
   margin-bottom: 115px;
@@ -19,17 +19,16 @@
   }
 }
 
+h1.aboutTitle {
+  margin-top: 0;
+}
+
 .aboutText {
-  margin: 65px auto;
+  margin: 0 auto 65px;
   padding: 0 30px 30px 0;
   h2 {
     margin: 50px 0 25px;
     font-weight: 400;
-  }
-  p {
-    margin-bottom: 15px;
-    font-size: 18px;
-    line-height: 160%;
   }
   ol li {
     font-size: 18px;

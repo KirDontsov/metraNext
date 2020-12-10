@@ -1,4 +1,4 @@
-import React, { useCallback, useState, FC, ChangeEvent } from "react";
+import React, { useCallback, useState, FC, ChangeEvent, memo } from "react";
 import TextField from "@material-ui/core/TextField";
 import MaskInput from "../utils/MaskInput";
 import { connect } from "react-redux";
@@ -326,4 +326,4 @@ const mapDispatch = (dispatch: Dispatch) => ({
   setLastName: dispatch.quizForDrivers.setLastName,
 });
 
-export default connect(mapState as any, mapDispatch as any)(Quiz);
+export default connect(mapState as any, mapDispatch as any)(memo(Quiz));

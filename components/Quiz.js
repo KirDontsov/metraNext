@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, memo } from "react";
 import DadataSuggestions from "react-dadata-suggestions";
 import { connect } from "react-redux";
 import ChangeCity from "./utils/ChangeCity";
@@ -375,4 +375,4 @@ const mapDispatch = (dispatch) => ({
   setAdditionalInput: dispatch.quiz.setAdditionalInput,
 });
 
-export default connect(mapState, mapDispatch)(Quiz);
+export default connect(mapState, mapDispatch)(memo(Quiz));

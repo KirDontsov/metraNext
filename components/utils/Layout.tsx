@@ -1,13 +1,16 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import Head from "next/head";
 import { Footer } from "../footer/Footer";
 
-type Props = {};
+type Props = { children: JSX.Element[] | JSX.Element };
 
-export const Layout: FC<Props> = ({ children }) => (
+const Layout: FC<Props> = ({ children }) => (
   <div className="wrapper">
     <Head>
-        <title>Такси Метра - Всепогодная служба легкового пассажирского такси и транспорта под заказ</title>
+      <title>
+        Такси Метра - Всепогодная служба легкового пассажирского такси и
+        транспорта под заказ
+      </title>
       {/* <meta name="yandex-verification" content="9fcaa5f92320287d" />
 			<meta name="google-site-verification" content="4GFebNPOpe9lCdvQkf9pXJGj5IWEBkxcGE9J736ZDOY" /> */}
       <meta charSet="utf-8" />
@@ -30,3 +33,5 @@ export const Layout: FC<Props> = ({ children }) => (
     <Footer />
   </div>
 );
+
+export default memo(Layout);

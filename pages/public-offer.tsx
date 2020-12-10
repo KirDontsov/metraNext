@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import LazyImage from "../components/utils/LazyImage";
-import { Layout } from "../components/utils/Layout";
+import Layout from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";
 import Head from "next/head";
 

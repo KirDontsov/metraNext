@@ -1,9 +1,9 @@
-import React from "react";
+import React, {FC, memo} from "react";
 import InputMask from "react-input-mask";
 import TextField from "@material-ui/core/TextField";
-// import classnames from "classnames";
+import { MaskInputProps } from "./interfaces";
 
-const MaskInput = (props) => {
+const MaskInput: FC<MaskInputProps> = (props) => {
   const {
     mask,
     formLabel,
@@ -34,4 +34,4 @@ const MaskInput = (props) => {
   );
 };
 
-export default MaskInput;
+export default memo(MaskInput);

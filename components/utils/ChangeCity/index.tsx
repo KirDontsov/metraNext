@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC } from "react";
+import React, { ChangeEvent, FC, memo } from "react";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -41,43 +41,21 @@ const ChangeCity: FC<ChangeCityProps> = (props) => {
         setLatitude!(44.561141);
         setLongitude!(38.076809);
         setZoom!(14);
-        // setQuery1("г. Геленджик,");
-        // setQuery2("г. Геленджик,");
-        // setQuery3("г. Геленджик,");
         break;
       case CityIdType.NOVOROSSISK:
         setLatitude!(44.723912);
         setLongitude!(37.768974);
         setZoom!(13);
-        // setQuery1("г. Новороссийск,");
-        // setQuery2("г. Новороссийск,");
-        // setQuery3("г. Новороссийск,");
         break;
       case CityIdType.YEYSK:
         setLatitude!(46.711524);
         setLongitude!(38.276451);
         setZoom!(14);
-        // setQuery1("г. Ейск,");
-        // setQuery2("г. Ейск,");
-        // setQuery3("г. Ейск,");
         break;
       default:
         throw new Error("Ошибка в выборе города");
     }
   };
-
-  // const renderCityName = () => {
-  //   switch (city) {
-  //     case 10:
-  //       return "Геленджик";
-  //     case 20:
-  //       return "Новороссийск";
-  //     case 30:
-  //       return "Ейск";
-  //     default:
-  //       break;
-  //   }
-  // };
 
   return (
     <FormControl variant="outlined" className="changeCity">
@@ -114,4 +92,4 @@ const mapDispatch = (dispatch: Dispatch) => ({
   setQuery3: dispatch.quiz.setQuery3,
 });
 
-export default connect(mapState as any, mapDispatch as any)(ChangeCity);
+export default connect(mapState as any, mapDispatch as any)(memo(ChangeCity));

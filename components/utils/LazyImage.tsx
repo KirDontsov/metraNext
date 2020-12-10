@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 type LazyImageProps = {
@@ -27,4 +27,4 @@ const LazyImage: FC<LazyImageProps> = ({
   );
 };
 
-export default LazyImage;
+export default memo(LazyImage);

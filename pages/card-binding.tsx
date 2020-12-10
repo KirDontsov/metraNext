@@ -1,7 +1,7 @@
-import React, {FC} from "react";
-import { Layout } from "../components/utils/Layout";
+import React, { FC } from "react";
+import Layout from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";
-import { CardBinding } from "../components/CardBinding";
+import CardBinding from "../components/CardBinding";
 import { CardBindingText } from "../components/content/CardBindingText";
 import Head from "next/head";
 

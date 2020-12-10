@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 
-export const CardBindingText = () => {
+export const CardBindingText: FC = () => {
   return (
     <div className="cardBindingText">
       <p>

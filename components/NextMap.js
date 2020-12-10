@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, memo } from "react";
 import { connect } from "react-redux";
 import {
   Map as LeafletMap,
@@ -212,4 +212,4 @@ const mapDispatch = (dispatch) => ({
   setZoom: dispatch.city.setZoom,
 });
 
-export default connect(mapState, mapDispatch)(NextMap);
+export default connect(mapState, mapDispatch)(memo(NextMap));
