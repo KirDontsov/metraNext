@@ -108,6 +108,8 @@ nav a {
 	line-height: 35px;
 	position: absolute;
 	right: 0;
+	display: flex;
+	align-items: center;
 	@media (max-width: 1240px) {
 		right: 50px;
 	}
@@ -174,9 +176,14 @@ nav a {
 	animation: appear 0.3s ease-in;
 }
 
+.accountCard {
+	margin-left: 30px;
+	cursor: pointer;
+}
+
 @keyframes appear {
 	0% {
-		width: 0px;
+		width: 0;
 		left: 0;
 	}
 

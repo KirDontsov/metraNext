@@ -1,10 +1,17 @@
-import React, { FC, memo, useEffect, useState } from "react";
+import React, { FC, memo, useCallback, useEffect, useState } from "react";
 import Link from "./Link";
 import { connect } from "react-redux";
-import { iRootState } from "../../shared/store";
+import { Dispatch, iRootState } from "../../shared/store";
+import { Account } from "../svg/Accaount";
+import { AccountClicked } from "../svg/AccountClicked";
+import { useRouter } from "next/router";
 
-interface NavProps extends Partial<ReturnType<typeof mapState>> {
+interface NavProps
+  extends Partial<ReturnType<typeof mapState>>,
+    Partial<ReturnType<typeof mapDispatch>> {
   city?: number;
+  accountClicked?: boolean;
+  setAccountClicked?: (prevState: any) => any;
 }
 
 const cityType = {
@@ -13,13 +20,25 @@ const cityType = {
   yeisk: 30,
 };
 
-const Nav: FC<NavProps> = (props) => {
-  const { city } = props;
+const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
   const [currentCity, setCurrentCity] = useState(10);
+
+  const router = useRouter();
+  const { pathname } = router;
 
   useEffect(() => {
     setCurrentCity(city || 10);
-  }, [city]);
+    if (pathname !== "/login") {
+      setAccountClicked!(false);
+    }
+  }, [city, pathname]);
+
+  const onClick = useCallback(() => {
+    router.push("/login");
+    if (!accountClicked) {
+      setAccountClicked!(true);
+    }
+  }, [setAccountClicked, accountClicked, router]);
 
   const renderPhoneByCity = (currentCity: number) => {
     if (currentCity === cityType.gel) {
@@ -46,7 +65,9 @@ const Nav: FC<NavProps> = (props) => {
   return (
     <div className="nav-wrapper">
       <div className="center nav__bot">
-        <a className="nav-link logo" href="/" />
+        <Link activeClassName="active" href="/">
+          <a className="logo" />
+        </Link>
         <nav>
           <Link activeClassName="active" href="/">
             <a className="nav-link">Для клиентов</a>
@@ -55,7 +76,14 @@ const Nav: FC<NavProps> = (props) => {
             <a className="nav-link">Для водителей</a>
           </Link>
         </nav>
-        <div className="rightNav">{renderPhoneByCity(currentCity)}</div>
+        <div className="rightNav">
+          {renderPhoneByCity(currentCity)}
+          {accountClicked ? (
+            <AccountClicked onClick={onClick} />
+          ) : (
+            <Account onClick={onClick} />
+          )}
+        </div>
       </div>
     </div>
   );
@@ -63,6 +91,11 @@ const Nav: FC<NavProps> = (props) => {
 
 const mapState = (state: iRootState) => ({
   city: state.city.city,
+  accountClicked: state.nav.accountClicked,
 });
 
-export default connect(mapState as any)(memo(Nav));
+const mapDispatch = (dispatch: Dispatch) => ({
+  setAccountClicked: dispatch.nav.setAccountClicked,
+});
+
+export default connect(mapState as any, mapDispatch as any)(memo(Nav));

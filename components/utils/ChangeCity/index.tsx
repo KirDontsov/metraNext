@@ -21,18 +21,13 @@ interface ChangeCityProps
   setZoom?: (e: number) => number;
 }
 
-const ChangeCity: FC<ChangeCityProps> = (props) => {
-  const {
-    city,
-    // latitude,
-    // longitude,
-    // zoom,
-    setCity,
-    setLatitude,
-    setLongitude,
-    setZoom,
-  } = props;
-
+const ChangeCity: FC<ChangeCityProps> = ({
+  city,
+  setCity,
+  setLatitude,
+  setLongitude,
+  setZoom,
+}) => {
   const handleChange = (e: ChangeEvent<{ name?: string; value: unknown }>) => {
     const cityId = e.target.value;
     setCity!(cityId as number);
