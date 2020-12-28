@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import Layout from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";
 import Head from "next/head";
-import LazyImage from "../components/utils/LazyImage";
 import LoginForm from "../components/LoginForm";
 import { formTypes } from "../components/LoginForm/constants";
 
@@ -20,13 +19,8 @@ const Login: FC = () => {
       </Head>
       <Nav />
       <div className="container web">
-        <div className="container map">
-          <LoginForm formType={formTypes.LOGIN} />
-          <LazyImage
-            className="heroBanner"
-            image={require("./../assets/img/forDrivers.jpg")}
-            alt="Стань водителем Таккси Метра"
-          />
+        <div className="container center">
+          <LoginForm formType={formTypes.AUTH} />
         </div>
       </div>
     </Layout>

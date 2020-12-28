@@ -3,3 +3,31 @@
 .btn.loginForm {
   width: 100% !important;
 }
+
+.container.center {
+  .Quiz.loginForm {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      max-width: 500px;
+    }
+    .quizForm {
+      width: 100%;
+    }
+  }
+}
+.linkContainer {
+  width: 400px;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  a.form-link {
+    font-size: 20px;
+    &:hover {
+      color: $blue;
+    }
+  }
+}

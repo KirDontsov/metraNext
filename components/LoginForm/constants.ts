@@ -18,3 +18,9 @@ export const FORM_API_URL =
   "http://webclient.metrataxi.ru:8000/metrasitedrvhunter";
 export const CODE_CHECK_API_URL =
   "http://webclient.metrataxi.ru:8000/metrasitedrvcodecheck";
+
+export enum formTypes {
+  AUTH = "auth",
+  LOGIN = "login",
+  RECOVER = "recover",
+}
