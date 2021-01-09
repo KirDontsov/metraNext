@@ -4,7 +4,6 @@ export const quizForDrivers = {
     email: "",
     firstName: "",
     lastName: "",
-    res: "",
   },
   reducers: {
     setPhone: (state, payload) => ({
@@ -22,10 +21,6 @@ export const quizForDrivers = {
     setLastName: (state, payload) => ({
       ...state,
       lastName: payload,
-    }),
-    setRes: (state, payload) => ({
-      ...state,
-      res: payload,
     }),
   },
 };

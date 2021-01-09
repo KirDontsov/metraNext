@@ -5,5 +5,4 @@ export enum confirmationCodeEnum {
   REPEAT = "repeat",
   /** повторить */
   FALSE = "false",
-
 }

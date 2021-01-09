@@ -41,11 +41,11 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
   const [formSent, setFormSent] = useToggleState(false);
   const [code, setCode] = useState("");
   const [codeSent, setCodeSent] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [
     confirmationCodeFromResponse,
     setConfirmationCodeFromResponse,
   ] = useState("");
+  const [loading, setLoading] = useState(false);
 
   /**
    * отправка контактов водителя
