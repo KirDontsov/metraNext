@@ -4,6 +4,7 @@ import Nav from "../components/nav/Nav";
 import CardBinding from "../components/CardBinding";
 import { CardBindingText } from "../components/content/CardBindingText";
 import Head from "next/head";
+import CardBindingForm from "../components/CardBindingForm";
 
 const title = "Оплата картой Такси Метра";
 const description =
@@ -19,6 +20,9 @@ const CardBindingPage: FC = () => (
     <div className="container web">
       <div className="container cardBinding">
         <CardBinding title="Привязка карты" />
+        <div className="container center">
+          <CardBindingForm />
+        </div>
         <CardBindingText />
       </div>
     </div>

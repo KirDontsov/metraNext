@@ -34,10 +34,11 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
   }, [city, pathname]);
 
   const onClick = useCallback(() => {
-    router.push("/login");
-    if (!accountClicked) {
-      setAccountClicked!(true);
-    }
+    // router.push("/login");
+    // if (!accountClicked) {
+    //   setAccountClicked!(!accountClicked);
+    // }
+    setAccountClicked!(!accountClicked);
   }, [setAccountClicked, accountClicked, router]);
 
   const renderPhoneByCity = (currentCity: number) => {
