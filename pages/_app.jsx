@@ -1,5 +1,6 @@
 import App from "next/app";
 import React from "react";
+import SmartBanner from "react-smartbanner";
 
 import withRematch from "../shared/withRematch";
 import { Provider } from "react-redux";
@@ -11,6 +12,12 @@ class MyApp extends App {
     return (
       <Provider store={reduxStore}>
         <Component {...pageProps} />
+        <SmartBanner
+          title={"Metra"}
+          button={"Скачать"}
+          price={{ ios: "FREE", android: "FREE", windows: "FREE" }}
+          position={"bottom"}
+        />
       </Provider>
     );
   }

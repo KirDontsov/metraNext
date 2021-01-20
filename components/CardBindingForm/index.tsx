@@ -267,7 +267,7 @@ const CardBindingForm: FC<CardBindingFormProps> = ({
                 placeholder="Код*"
               />
               <button className="btn loginForm" onClick={onSendCode}>
-                {!loading ? "Отправить" : "Отправка..."}
+                {!loading ? "Привязать" : "Привязка..."}
               </button>
             </div>
 

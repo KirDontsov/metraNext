@@ -26,7 +26,32 @@ const Layout: FC<Props> = ({ children }) => (
         type="image/x-icon"
         href={require("../../assets/img/logo.png")}
       />
-      <link rel="shortcut icon" href="/static/favicon.ico" />
+      <link
+        rel="shortcut icon"
+        href={require("../../assets/img/favicon.ico")}
+      />
+
+      {/*<meta*/}
+      {/*  name="msApplication-ID"*/}
+      {/*  content="82a23635-5bd9-df11-a844-00237de2db9e"*/}
+      {/*/>*/}
+      {/*<meta*/}
+      {/*  name="msApplication-PackageFamilyName"*/}
+      {/*  content="facebook_9wzdncrfhv5g"*/}
+      {/*/>*/}
+      <meta name="kindle-fire-app" content="app-id=1440419621" />
+      <link
+        rel="apple-touch-icon"
+        href={require("../../assets/img/logo.png")}
+      />
+      <link
+        rel="android-touch-icon"
+        href={require("../../assets/img/logo.png")}
+      />
+      <link
+        rel="windows-touch-icon"
+        href={require("../../assets/img/logo.png")}
+      />
     </Head>
 
     {children}
