@@ -37,7 +37,7 @@ const Home: FC<HomeProps> = (props) => {
 		setLatitude!(46.711524);
 		setLongitude!(38.276451);
 		setZoom!(14);
-	}, [setCity]);
+	}, [setCity, setLatitude, setLongitude, setZoom]);
 
 	return (
 		<Layout>
