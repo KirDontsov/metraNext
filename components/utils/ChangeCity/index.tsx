@@ -37,7 +37,7 @@ const ChangeCity: FC<ChangeCityProps> = ({
         setLongitude!(38.076809);
         setZoom!(14);
         break;
-      case CityIdType.NOVOROSSISK:
+      case CityIdType.NOVOROSSIYSK:
         setLatitude!(44.723912);
         setLongitude!(37.768974);
         setZoom!(13);

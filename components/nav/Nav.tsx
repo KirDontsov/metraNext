@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback, useEffect, useState } from "react";
+import React, { FC, memo, useCallback, useEffect } from "react";
 import Link from "./Link";
 import { connect } from "react-redux";
 import { Dispatch, iRootState } from "../../shared/store";
@@ -21,13 +21,10 @@ const cityType = {
 };
 
 const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
-  const [currentCity, setCurrentCity] = useState(10);
-
   const router = useRouter();
   const { pathname } = router;
 
   useEffect(() => {
-    setCurrentCity(city || 10);
     if (pathname !== "/login") {
       setAccountClicked!(false);
     }
@@ -41,20 +38,20 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
     setAccountClicked!(!accountClicked);
   }, [setAccountClicked, accountClicked, router]);
 
-  const renderPhoneByCity = (currentCity: number) => {
-    if (currentCity === cityType.gel) {
+  const renderPhoneByCity = (city: number) => {
+    if (city === cityType.gel) {
       return (
         <a href="tel:+78614155555" className="phone">
           +7 (861-41) 5-55-55
         </a>
       );
-    } else if (currentCity === cityType.novoros) {
+    } else if (city === cityType.novoros) {
       return (
         <a href="tel:+78617610111" className="phone">
           +7 (861-7) 610-111
         </a>
       );
-    } else if (currentCity === cityType.yeisk) {
+    } else if (city === cityType.yeisk) {
       return (
         <a href="tel:+78613235555" className="phone">
           +7 (861-32) 3-55-55
@@ -78,7 +75,7 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
           </Link>
         </nav>
         <div className="rightNav">
-          {renderPhoneByCity(currentCity)}
+          {renderPhoneByCity(city ?? 10)}
           {accountClicked ? (
             <AccountClicked onClick={onClick} />
           ) : (

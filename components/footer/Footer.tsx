@@ -15,15 +15,14 @@ export const Footer = () => {
           <Link activeClassName="active" href="/about">
             <a className="nav-link">О компании</a>
           </Link>
-          <Link activeClassName="active" href="/index">
-            <a className="nav-link">Для пользователей</a>
-          </Link>
+          {/*<Link activeClassName="active" href="/index">*/}
+          {/*  <a className="nav-link">Для пользователей</a>*/}
+          {/*</Link>*/}
+          <a className="nav-link">Для пользователей</a>
           <Link activeClassName="active" href="/for-drivers">
             <a className="nav-link">Для водителей</a>
           </Link>
-          <Link activeClassName="active" href="/public-offer">
-            <a className="nav-link">Публичная оферта</a>
-          </Link>
+          <a className="nav-link" href="/oferta.doc" download>Публичная оферта</a>
           <div className="appLinks">
             <a className="app-link">
               <Apple />
