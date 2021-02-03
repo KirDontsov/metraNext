@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback, useEffect } from "react";
+import React, { FC, memo, useCallback, useEffect, useState } from "react";
 import Link from "./Link";
 import { connect } from "react-redux";
 import { Dispatch, iRootState } from "../../shared/store";
@@ -21,12 +21,19 @@ const cityType = {
 };
 
 const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
+  const [activeHref, setActiveHref] = useState('/');
   const router = useRouter();
   const { pathname } = router;
 
   useEffect(() => {
     if (pathname !== "/login") {
       setAccountClicked!(false);
+    }
+    if (pathname !== "/yeisk") {
+      setActiveHref(pathname);
+    }
+    if (pathname !== "/novorossiysk") {
+      setActiveHref(pathname);
     }
   }, [city, pathname]);
 
@@ -67,7 +74,7 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
           <a className="logo" />
         </Link>
         <nav>
-          <Link activeClassName="active" href="/">
+          <Link activeClassName="active" href={activeHref}>
             <a className="nav-link">Для клиентов</a>
           </Link>
           <Link activeClassName="active" href="/for-drivers">
