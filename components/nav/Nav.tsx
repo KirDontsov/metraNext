@@ -29,10 +29,10 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
     if (pathname !== "/login") {
       setAccountClicked!(false);
     }
-    if (pathname !== "/yeisk") {
+    if (pathname === "/yeisk") {
       setActiveHref(pathname);
     }
-    if (pathname !== "/novorossiysk") {
+    if (pathname === "/novorossiysk") {
       setActiveHref(pathname);
     }
   }, [city, pathname]);
