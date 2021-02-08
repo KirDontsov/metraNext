@@ -22,7 +22,9 @@ export const Footer = () => {
           <Link activeClassName="active" href="/for-drivers">
             <a className="nav-link">Для водителей</a>
           </Link>
-          <a className="nav-link" href="/oferta.doc" download>Публичная оферта</a>
+          <Link activeClassName="active" href="/public-offer">
+            <a className="nav-link">Публичная оферта</a>
+          </Link>
           <div className="appLinks">
             <a className="app-link">
               <Apple />
