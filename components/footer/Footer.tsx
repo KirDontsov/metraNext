@@ -15,7 +15,7 @@ export const Footer = () => {
           <Link activeClassName="active" href="/about">
             <a className="nav-link">О компании</a>
           </Link>
-          <Link activeClassName="active" href="/index">
+          <Link activeClassName="active" href="/">
             <a className="nav-link">Для клиентов</a>
           </Link>
           <Link activeClassName="active" href="/for-drivers">
@@ -25,10 +25,10 @@ export const Footer = () => {
             <a className="nav-link">Публичная оферта</a>
           </Link>
           <div className="appLinks">
-            <a className="app-link">
+            <a className="app-link" >
               <Apple />
             </a>
-            <a className="app-link">
+            <a className="app-link" href="https://play.google.com/store/apps/details?id=tools.taxi.pickup&hl=ru&gl=US">
               <Android />
             </a>
           </div>

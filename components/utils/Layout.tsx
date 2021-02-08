@@ -39,7 +39,6 @@ const Layout: FC<Props> = ({ children }) => (
       {/*  name="msApplication-PackageFamilyName"*/}
       {/*  content="facebook_9wzdncrfhv5g"*/}
       {/*/>*/}
-      <meta name="kindle-fire-app" content="app-id=1440419621" />
       <link
         rel="apple-touch-icon"
         href={require("../../assets/img/logo.png")}
