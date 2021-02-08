@@ -25,7 +25,7 @@ export const Footer = () => {
             <a className="nav-link">Публичная оферта</a>
           </Link>
           <div className="appLinks">
-            <a className="app-link" >
+            <a className="app-link" href="https://apps.apple.com/ru/app/metra-%D1%82%D0%B0%D0%BA%D1%81%D0%B8/id1440419621">
               <Apple />
             </a>
             <a className="app-link" href="https://play.google.com/store/apps/details?id=tools.taxi.pickup&hl=ru&gl=US">
