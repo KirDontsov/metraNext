@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect } from "react";
+import React, { FC, memo, useEffect, useState } from "react";
 import Layout from "../components/utils/Layout";
 import dynamic from "next/dynamic";
 import { Benefits } from "../components/Benefits";
@@ -8,6 +8,7 @@ import Head from "next/head";
 import { Dispatch, iRootState } from "../shared/store";
 import { connect } from "react-redux";
 import { CityIdType } from "../components/utils/ChangeCity/interfaces";
+import Burger from "../components/nav/Burger";
 
 const DynamicMap = dynamic(() => import("../components/NextMap"), {
   ssr: false,
@@ -39,13 +40,31 @@ const Home: FC<HomeProps> = (props) => {
     setZoom!(13);
   }, [setCity, setLatitude, setLongitude, setZoom]);
 
+  const [width, setWidth] = useState<null | number>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth);
+      if (width! <= 768) {
+        setIsMobile(true);
+      }
+      if (width! > 768) {
+        setIsMobile(false);
+      }
+
+      window.addEventListener("resize", () => setWidth(window.innerWidth));
+      return () =>
+        window.removeEventListener("resize", () => setWidth(window.innerWidth));
+    }
+  }, [width]);
+
   return (
     <Layout>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <Nav />
+      {isMobile ? <Burger /> : <Nav />}
       <div className="container web">
         <div className="container map">
           <DynamicQuiz />

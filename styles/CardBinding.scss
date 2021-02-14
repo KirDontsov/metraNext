@@ -12,8 +12,11 @@
 		position: relative;
 		left: 50%;
 		transform: translateX(-50%);
-		padding: 110px 30px;
+		padding: 110px 60px;
 		flex-direction: column;
+		@media (max-width: 425px) {
+			padding: 110px 30px;
+		}
 	}
 	.col {
 		width: 50%;
@@ -26,11 +29,22 @@
 			font-size: 70px;
 			line-height: 71px;
 			margin-bottom: 52px;
+			@media (max-width: 768px) {
+				margin-top: 96px;
+				max-width: 100%;
+				@media (max-width: 425px) {
+					font-size: 40px;
+					line-height: 140%;
+				}
+			}
 		}
 		p {
 			font-size: 20px;
 			line-height: 147.52%;
 			margin-bottom: 60px;
+			@media (max-width: 425px) {
+				font-size: 18px;
+			}
 		}
 		a.nav-link {
 			display: flex;

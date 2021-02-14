@@ -1,10 +1,11 @@
-import React, { ChangeEvent, FC, memo, useRef, useEffect } from "react";
+import React, {ChangeEvent, FC, memo, useRef, useEffect, useState} from "react";
 import Layout from "../components/utils/Layout";
 import Nav from "../components/nav/Nav";
 import Head from "next/head";
 import { iRootState, Dispatch } from "../shared/store";
 import { connect } from "react-redux";
 import { ResType } from "../components/LoginForm/interfaces";
+import Burger from "../components/nav/Burger";
 
 const title = "Оплата картой Такси Метра";
 const description =
@@ -26,7 +27,24 @@ interface LoginFormProps
 const CardBindingFormPage: FC<LoginFormProps> = ({ res }) => {
   const { clientid, orderid, client_phone } = res;
   const formRef = useRef<HTMLFormElement | null>(null);
-  console.log(res);
+
+  const [width, setWidth] = useState<null | number>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth);
+      if (width! <= 768) {
+        setIsMobile(true);
+      }
+      if (width! > 768) {
+        setIsMobile(false);
+      }
+
+      window.addEventListener("resize", () => setWidth(window.innerWidth));
+      return () =>
+        window.removeEventListener("resize", () => setWidth(window.innerWidth));
+    }
+  }, [width]);
 
   useEffect(() => {
     // @ts-ignore
@@ -39,7 +57,7 @@ const CardBindingFormPage: FC<LoginFormProps> = ({ res }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <Nav />
+      {isMobile ? <Burger /> : <Nav />}
       <div className="container web">
         <form
           ref={formRef}

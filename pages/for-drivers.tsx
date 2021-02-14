@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import QuizForDrivers from "../components/QuizForDrivers";
 import LazyImage from "../components/utils/LazyImage";
@@ -7,31 +7,51 @@ import Nav from "../components/nav/Nav";
 import Head from "next/head";
 import { Benefits } from "../components/Benefits";
 import { ForDriversText } from "../components/content/ForDriversText";
+import Burger from "../components/nav/Burger";
 
 const title = "Стать водителем Такси Метра | Подключение к Такси Метра";
 const description =
   "Подключение к заказам Такси Метра. Работа в Такси Метра. Низкие комиссии";
 
-const ForDrivers: FC = () => (
-  <Layout>
-    <Head>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-    </Head>
-    <Nav />
-    <div className="container web">
-      <div className="container forDrivers">
-        <QuizForDrivers />
-        <LazyImage
-          className="heroBanner forDrivers"
-          image={require("./../assets/img/forDrivers.jpg")}
-          alt="Стань водителем Таккси Метра"
-        />
+const ForDrivers: FC = () => {
+  const [width, setWidth] = useState<null | number>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth);
+      if (width! <= 768) {
+        setIsMobile(true);
+      }
+      if (width! > 768) {
+        setIsMobile(false);
+      }
+
+      window.addEventListener("resize", () => setWidth(window.innerWidth));
+      return () =>
+        window.removeEventListener("resize", () => setWidth(window.innerWidth));
+    }
+  }, [width]);
+  return (
+    <Layout>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+      </Head>
+      {isMobile ? <Burger /> : <Nav />}
+      <div className="container web">
+        <div className="container forDrivers">
+          <QuizForDrivers />
+          <LazyImage
+            className="heroBanner forDrivers"
+            image={require("./../assets/img/forDrivers.jpg")}
+            alt="Стань водителем Таккси Метра"
+          />
+        </div>
+        <ForDriversText />
+        <Benefits />
       </div>
-      <ForDriversText />
-      <Benefits />
-    </div>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default ForDrivers;

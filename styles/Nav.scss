@@ -123,22 +123,19 @@ nav a {
 	align-items: center;
 	@media (max-width: 1240px) {
 		right: 50px;
-		@media (max-width: 425px) {
-			right: 30px;
+		@media (max-width: 768px) {
+			right: 0;
 		}
 	}
 	.phone {
 		color: $textColor;
 		font-weight: 500;
-		// &:nth-child(1) {
-		// 	padding-right: 30px;
-		// }
 		@media (max-width: 1140px) {
 			font-size: 20px;
 			@media (max-width: 988px) {
 				font-size: 15px;
-				@media (max-width: 425px) {
-					display: none;
+				@media (max-width: 768px) {
+					font-size: 20px;
 				}
 			}
 		}

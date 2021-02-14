@@ -5,6 +5,7 @@ import { Dispatch, iRootState } from "../../shared/store";
 import { Account } from "../svg/Accaount";
 import { AccountClicked } from "../svg/AccountClicked";
 import { useRouter } from "next/router";
+import { CityIdType } from "../utils/ChangeCity/interfaces";
 
 interface NavProps
   extends Partial<ReturnType<typeof mapState>>,
@@ -14,14 +15,8 @@ interface NavProps
   setAccountClicked?: (prevState: any) => any;
 }
 
-const cityType = {
-  gel: 10,
-  novoros: 20,
-  yeisk: 30,
-};
-
 const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
-  const [activeHref, setActiveHref] = useState('/');
+  const [activeHref, setActiveHref] = useState("/");
   const router = useRouter();
   const { pathname } = router;
 
@@ -46,19 +41,19 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
   }, [setAccountClicked, accountClicked, router]);
 
   const renderPhoneByCity = (city: number) => {
-    if (city === cityType.gel) {
+    if (city === CityIdType.GELENDJIK) {
       return (
         <a href="tel:+78614155555" className="phone">
           +7 (861-41) 5-55-55
         </a>
       );
-    } else if (city === cityType.novoros) {
+    } else if (city === CityIdType.NOVOROSSIYSK) {
       return (
         <a href="tel:+78617610111" className="phone">
           +7 (861-7) 610-111
         </a>
       );
-    } else if (city === cityType.yeisk) {
+    } else if (city === CityIdType.YEYSK) {
       return (
         <a href="tel:+78613235555" className="phone">
           +7 (861-32) 3-55-55

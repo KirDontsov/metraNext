@@ -27,6 +27,12 @@
       color: $blue;
     }
   }
+  @media (max-width: 768px) {
+    top: 910px;
+    @media (max-width: 425px) {
+      top: 855px;
+    }
+  }
 }
 
 .comment {

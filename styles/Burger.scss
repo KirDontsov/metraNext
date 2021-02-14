@@ -127,11 +127,11 @@
   .container__mob {
     display: flex;
     flex-direction: column;
-    padding: 40% 10%;
+    padding: 40% 30%;
     margin: 0 auto;
     position: relative;
     @media (max-width: 425px) {
-      padding: 70% 10%;
+      padding: 70% 14%;
     }
 
     .nav-link {
@@ -142,6 +142,15 @@
       text-align: center;
       &.active:before {
         bottom: 0;
+      }
+    }
+    .appLinks {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-around;
+      .android {
+        margin-top: -10px;
+        margin-left: 20px;
       }
     }
   }
@@ -155,11 +164,11 @@
 
   position: absolute;
   right: 30px;
-  top: 45px;
+  top: 12px;
 
   color: transparent;
   width: 100px;
-  height: 50px;
+  height: 60px;
   padding: 0;
   margin: 0;
 
