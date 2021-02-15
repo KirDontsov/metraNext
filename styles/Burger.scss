@@ -186,3 +186,10 @@
     text-align: center;
   }
 }
+
+.logo.burger {
+  left: 55px;
+  @media (max-width: 340px) {
+    left: 45px;
+  }
+}

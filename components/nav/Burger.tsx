@@ -101,8 +101,6 @@ const Burger: FC<BurgerProps> = ({ city, setAccountClicked }) => {
     }
   };
 
-  console.log(city);
-
   return (
     <div className="center nav__bot">
       <Motion
@@ -166,6 +164,9 @@ const Burger: FC<BurgerProps> = ({ city, setAccountClicked }) => {
           </Fragment>
         )}
       </Motion>
+      <Link activeClassName="active" href="/">
+        <a className="logo burger" />
+      </Link>
       <div className="rightNav">{renderPhoneByCity(city ?? 10)}</div>
     </div>
   );
