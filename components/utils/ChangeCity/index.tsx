@@ -47,6 +47,11 @@ const ChangeCity: FC<ChangeCityProps> = ({
         setLongitude!(38.276451);
         setZoom!(14);
         break;
+      case CityIdType.TAGANROG:
+        setLatitude!(47.221802);
+        setLongitude!(38.917300);
+        setZoom!(14);
+        break;
       default:
         throw new Error("Ошибка в выборе города");
     }
@@ -65,6 +70,7 @@ const ChangeCity: FC<ChangeCityProps> = ({
         <MenuItem value={10}>Геленджик</MenuItem>
         <MenuItem value={20}>Новороссийск</MenuItem>
         <MenuItem value={30}>Ейск</MenuItem>
+        <MenuItem value={40}>Таганрог</MenuItem>
       </Select>
     </FormControl>
   );

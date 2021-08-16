@@ -5,4 +5,6 @@ export enum CityIdType {
   NOVOROSSIYSK = 20,
   /** Ейск */
   YEYSK = 30,
+  /** Ейск */
+  TAGANROG = 40,
 }

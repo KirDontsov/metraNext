@@ -59,6 +59,12 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
           +7 (861-32) 3-55-55
         </a>
       );
+    } else if (city === CityIdType.TAGANROG) {
+      return (
+        <a href="tel:+78613235555" className="phone">
+          +7 (863-4) 33-33-33
+        </a>
+      );
     }
   };
 
