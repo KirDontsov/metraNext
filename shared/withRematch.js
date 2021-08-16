@@ -18,7 +18,7 @@ function getOrCreateStore(initialState) {
   return window[__NEXT_REDUX_STORE__];
 }
 
-export default (App) => {
+const WithRematch = (App) => {
   return class AppWithRematch extends React.Component {
     static async getStaticProps(appContext) {
       // Get or Create the store with `undefined` as initialState
@@ -49,3 +49,5 @@ export default (App) => {
     }
   };
 };
+
+export default WithRematch;
