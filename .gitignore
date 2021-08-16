@@ -28,3 +28,18 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# vscode
+.vscode/
+
+# idea
+.idea
+.idea/**
+*.iml
+gradle/wrapper/**
+gradlew
+gradlew.bat
+out/
+.gradle/**
+target/
+.idea_modules/
