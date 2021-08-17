@@ -35,9 +35,9 @@ const Home: FC<HomeProps> = (props) => {
 
   useEffect(() => {
     setCity!(CityIdType.TAGANROG);
-    setLatitude!(46.711524);
-    setLongitude!(38.276451);
-    setZoom!(14);
+    setLatitude!(47.231558);
+    setLongitude!(38.895600);
+    setZoom!(13);
   }, [setCity, setLatitude, setLongitude, setZoom]);
 
   const [width, setWidth] = useState<null | number>(null);

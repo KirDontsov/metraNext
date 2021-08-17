@@ -48,9 +48,9 @@ const ChangeCity: FC<ChangeCityProps> = ({
         setZoom!(14);
         break;
       case CityIdType.TAGANROG:
-        setLatitude!(47.221802);
-        setLongitude!(38.917300);
-        setZoom!(14);
+        setLatitude!(47.231558);
+        setLongitude!(38.895600);
+        setZoom!(13);
         break;
       default:
         throw new Error("Ошибка в выборе города");
