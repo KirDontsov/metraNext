@@ -30,6 +30,9 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
     if (pathname === "/novorossiysk") {
       setActiveHref(pathname);
     }
+    if (pathname === "/taganrog") {
+      setActiveHref(pathname);
+    }
   }, [city, pathname]);
 
   const onClick = useCallback(() => {
