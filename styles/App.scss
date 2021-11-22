@@ -14,6 +14,7 @@
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
+	font-family: "Montserrat", sans-serif !important;
 }
 
 html,
@@ -21,11 +22,12 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
-	font-family: "TT Norms", sans-serif !important;
+	font-family: "Montserrat", sans-serif !important;
 	width: 100vw;
 	height: 100vh;
 	overflow-y: hidden;
 	color: $textColor;
+	letter-spacing: -0.5px;
 }
 
 body {
@@ -120,7 +122,7 @@ h1.dark {
 }
 
 input {
-	font-family: "TT Norms", sans-serif !important;
+	font-family: "Montserrat", sans-serif !important;
 }
 
 .heading {
