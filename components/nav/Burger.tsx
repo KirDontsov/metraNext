@@ -1,4 +1,4 @@
-import React, {
+import {
   Fragment,
   FC,
   useState,
@@ -11,7 +11,7 @@ import { noop } from "lodash";
 import classNames from "classnames";
 import Link from "./Link";
 import { connect } from "react-redux";
-import { Dispatch, iRootState } from "../../shared/store";
+import type { iRootState } from "../../shared/store";
 import { useRouter } from "next/router";
 import { Apple } from "../footer/Apple";
 import { Android } from "../footer/Android";
@@ -38,7 +38,7 @@ interface BurgerProps
   setAccountClicked?: (prevState: any) => any;
 }
 
-const Burger: FC<BurgerProps> = ({ city, setAccountClicked }) => {
+const Burger: FC<BurgerProps> = ({ city }) => {
   const [active, setActive] = useToggleState(false);
   const [addClass, setAddClass] = useToggleState(false);
   const [activeHref, setActiveHref] = useState("/");
@@ -59,17 +59,17 @@ const Burger: FC<BurgerProps> = ({ city, setAccountClicked }) => {
     setAddClass();
   }, [active, addClass]);
 
-  const onClick = useCallback(() => {
-    scrollToTop();
-  }, []);
+  // const onClick = useCallback(() => {
+  //   scrollToTop();
+  // }, []);
 
-  const scrollToTop = () => {
-    let div;
-    if (div !== null) {
-      div = document.querySelector(".wrapper");
-      div!.scrollTop = 0;
-    }
-  };
+  // const scrollToTop = () => {
+  //   let div;
+  //   if (div !== null) {
+  //     div = document.querySelector(".wrapper");
+  //     div!.scrollTop = 0;
+  //   }
+  // };
 
   let buttonClass = ["button--large"];
   let navClass = ["nav__toggle"];
@@ -80,24 +80,37 @@ const Burger: FC<BurgerProps> = ({ city, setAccountClicked }) => {
   }
 
   const renderPhoneByCity = (city: number) => {
-    if (city === CityIdType.GELENDJIK) {
-      return (
-        <a href="tel:+78614155555" className="phone">
-          +7 (861-41) 5-55-55
-        </a>
-      );
-    } else if (city === CityIdType.NOVOROSSIYSK) {
-      return (
-        <a href="tel:+78617610111" className="phone">
-          +7 (861-7) 610-111
-        </a>
-      );
-    } else if (city === CityIdType.YEYSK) {
-      return (
-        <a href="tel:+78613235555" className="phone">
-          +7 (861-32) 3-55-55
-        </a>
-      );
+    switch(city) {
+      case (CityIdType.GELENDJIK):
+        return (
+          <a href="tel:+78614155555" className="phone">
+            +7 (861-41) 5-55-55
+          </a>
+        );
+      case (CityIdType.NOVOROSSIYSK):
+        return (
+          <a href="tel:+78617610111" className="phone">
+            +7 (861-7) 610-111
+          </a>
+        );
+      case (CityIdType.YEYSK):
+        return (
+          <a href="tel:+78613235555" className="phone">
+            +7 (861-32) 3-55-55
+          </a>
+        );
+      case(CityIdType.TAGANROG):
+        return (
+          <a href="tel:+78634333333" className="phone">
+            +7 (863-4) 333-333
+          </a>
+        );
+      default:
+        return (
+          <a href="tel:+78614155555" className="phone">
+            +7 (861-41) 5-55-55
+          </a>
+        );
     }
   };
 
@@ -176,6 +189,6 @@ const mapState = (state: iRootState) => ({
   city: state.city.city,
 });
 
-const mapDispatch = (dispatch: Dispatch) => ({});
+const mapDispatch = () => ({});
 
 export default connect(mapState as any, mapDispatch as any)(memo(Burger));

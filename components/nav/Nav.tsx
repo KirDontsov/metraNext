@@ -44,30 +44,37 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
   }, [setAccountClicked, accountClicked, router]);
 
   const renderPhoneByCity = (city: number) => {
-    if (city === CityIdType.GELENDJIK) {
-      return (
-        <a href="tel:+78614155555" className="phone">
-          +7 (861-41) 5-55-55
-        </a>
-      );
-    } else if (city === CityIdType.NOVOROSSIYSK) {
-      return (
-        <a href="tel:+78617610111" className="phone">
-          +7 (861-7) 610-111
-        </a>
-      );
-    } else if (city === CityIdType.YEYSK) {
-      return (
-        <a href="tel:+78613235555" className="phone">
-          +7 (861-32) 3-55-55
-        </a>
-      );
-    } else if (city === CityIdType.TAGANROG) {
-      return (
-        <a href="tel:+78634333333" className="phone">
-          +7 (863-4) 333-333
-        </a>
-      );
+    switch(city) {
+      case (CityIdType.GELENDJIK):
+        return (
+          <a href="tel:+78614155555" className="phone">
+            +7 (861-41) 5-55-55
+          </a>
+        );
+      case (CityIdType.NOVOROSSIYSK):
+        return (
+          <a href="tel:+78617610111" className="phone">
+            +7 (861-7) 610-111
+          </a>
+        );
+      case (CityIdType.YEYSK):
+        return (
+          <a href="tel:+78613235555" className="phone">
+            +7 (861-32) 3-55-55
+          </a>
+        );
+      case(CityIdType.TAGANROG):
+        return (
+          <a href="tel:+78634333333" className="phone">
+            +7 (863-4) 333-333
+          </a>
+        );
+      default:
+        return (
+          <a href="tel:+78614155555" className="phone">
+            +7 (861-41) 5-55-55
+          </a>
+        );
     }
   };
 
