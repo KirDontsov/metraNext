@@ -5,6 +5,9 @@ import ChangeCity from "./utils/ChangeCity";
 
 // const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 
+const GEOCODE_LINK = 'https://geocode-maps.yandex.ru/1.x/?format=json&apikey=c07c297b-ab06-495a-87e3-2627c9c225d8&geocode=';
+const DADATA_TOKEN = 'fc70bbc8effa9a5c8946b3fe83bb4fdebba8d11d';
+
 export class Quiz extends Component {
   // генерация UID
   generateId() {
@@ -27,7 +30,7 @@ export class Quiz extends Component {
 
     if (firstAddress !== undefined || null || "") {
       fetch(
-        `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=c07c297b-ab06-495a-87e3-2627c9c225d8&geocode=${firstAddress}`
+        `${GEOCODE_LINK}${firstAddress}`
       )
         .then((response) => response.json())
         .then((result) => that.props.setData1(result));
@@ -35,14 +38,14 @@ export class Quiz extends Component {
 
     if (secondAddress !== undefined || null || "") {
       fetch(
-        `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=c07c297b-ab06-495a-87e3-2627c9c225d8&geocode=${secondAddress}`
+        `${GEOCODE_LINK}${secondAddress}`
       )
         .then((response) => response.json())
         .then((result) => that.props.setData2(result));
     }
     if (additionalAddress !== undefined || null || "") {
       fetch(
-        `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=c07c297b-ab06-495a-87e3-2627c9c225d8&geocode=${additionalAddress}`
+        `${GEOCODE_LINK}${additionalAddress}`
       )
         .then((response) => response.json())
         .then((result) => {
@@ -148,36 +151,6 @@ export class Quiz extends Component {
     return " " + rideDistance / 1000 + " км";
   }
 
-  // при клике на инпут ставит город
-
-  // onFocusOne() {
-  // 	if (this.props.city === 10) {
-  // 		this.props.setQuery1("г. Геленджик, ");
-  // 	} else if (this.props.city === 20) {
-  // 		this.props.setQuery1("г. Новороссийск, ");
-  // 	} else if (this.props.city === 30) {
-  // 		this.props.setQuery1("г. Ейск, ");
-  // 	}
-  // }
-  // onFocusTwo() {
-  // 	if (this.props.city === 10) {
-  // 		this.props.setQuery2("г. Геленджик, ");
-  // 	} else if (this.props.city === 20) {
-  // 		this.props.setQuery2("г. Новороссийск, ");
-  // 	} else if (this.props.city === 30) {
-  // 		this.props.setQuery2("г. Ейск, ");
-  // 	}
-  // }
-  // onFocusThree() {
-  // 	if (this.props.city === 10) {
-  // 		this.props.setQuery3("г. Геленджик, ");
-  // 	} else if (this.props.city === 20) {
-  // 		this.props.setQuery3("г. Новороссийск, ");
-  // 	} else if (this.props.city === 30) {
-  // 		this.props.setQuery3("г. Ейск, ");
-  // 	}
-  // }
-
   onFocusOne() {
     this.props.setQuery1("");
   }
@@ -187,10 +160,6 @@ export class Quiz extends Component {
   onFocusThree() {
     this.props.setQuery3("");
   }
-
-  // onChangeInput(e) {
-  // 	e.target.selectionStart = 0;
-  // }
 
   addInput() {
     this.props.setAdditionalInput(true);
@@ -234,7 +203,7 @@ export class Quiz extends Component {
           <ChangeCity />
           <DadataSuggestions
             label="Откуда?"
-            token="d19c6d0b94e64b21d8168f9659f64f7b8c1acd1f"
+            token={DADATA_TOKEN}
             onSelect={(suggestion) => {
               return this.props.setFirstAddress(suggestion);
             }}
@@ -254,7 +223,7 @@ export class Quiz extends Component {
             deferRequestBy={300}
           />
           <DadataSuggestions
-            token="d19c6d0b94e64b21d8168f9659f64f7b8c1acd1f"
+            token={DADATA_TOKEN}
             onSelect={(suggestion) => this.props.setSecondAddress(suggestion)}
             onFocus={() => this.onFocusTwo()}
             geolocation={true}
@@ -273,7 +242,7 @@ export class Quiz extends Component {
 
           {this.props.additionalInput ? (
             <DadataSuggestions
-              token="d19c6d0b94e64b21d8168f9659f64f7b8c1acd1f"
+              token={DADATA_TOKEN}
               onSelect={(suggestion) =>
                 this.props.setAdditionalAddress(suggestion)
               }

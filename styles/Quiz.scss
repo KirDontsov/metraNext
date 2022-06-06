@@ -108,6 +108,10 @@
       &::placeholder {
         color: $lightBlue !important;
       }
+
+      &:focus-visible {
+        outline-color: transparent !important;
+      }
     }
     .suggestions-wrapper {
       font-size: 20px;
