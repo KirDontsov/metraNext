@@ -7,9 +7,9 @@ import { connect } from "react-redux";
 import { ResType } from "../components/LoginForm/interfaces";
 import Burger from "../components/nav/Burger";
 
-const title = "Оплата картой Такси Метра";
+const title = "Оплата картой Метра Трансфер";
 const description =
-  "Оплата картой Такси Метра. Быстрый и удобный способ оплаты";
+  "Оплата картой Метра Трансфер. Быстрый и удобный способ оплаты";
 
 // @ts-ignore
 interface LoginFormProps

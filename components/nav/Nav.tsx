@@ -82,7 +82,7 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
     <div className="nav-wrapper">
       <div className="center nav__bot">
         <Link activeClassName="active" href="/">
-          <a className="logo" />
+          <a className="logo" >metra&nbsp;<span className="transfer">трансфер</span></a>
         </Link>
         <nav>
           <Link activeClassName="active" href={activeHref}>

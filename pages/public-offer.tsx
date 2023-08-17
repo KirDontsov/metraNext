@@ -5,8 +5,8 @@ import Head from "next/head";
 import { PublicOfferText } from "../components/content/PublicOfferText";
 import Burger from "../components/nav/Burger";
 
-const title = "Публичная оферта Такси Метра";
-const description = "Публичная оферта Такси Метра.";
+const title = "Публичная оферта Метра Трансфер";
+const description = "Публичная оферта Метра Трансфер.";
 
 const publicOffer: FC = () => {
   const [width, setWidth] = useState<null | number>(null);

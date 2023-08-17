@@ -1,4 +1,4 @@
-import {
+import React, {
   Fragment,
   FC,
   useState,
@@ -130,7 +130,7 @@ const Burger: FC<BurgerProps> = ({ city }) => {
             <div className={navClass.join(" ")}>
               <div className="container__mob">
                 <Link activeClassName="active" href="/">
-                  <a className="logo__mob" />
+                  <a className="logo__mob" >metra&nbsp;<span className="transfer_mob">трансфер</span></a>
                 </Link>
                 <Link activeClassName="active" href="/about">
                   <a className="nav-link">О нас</a>
@@ -178,7 +178,7 @@ const Burger: FC<BurgerProps> = ({ city }) => {
         )}
       </Motion>
       <Link activeClassName="active" href="/">
-        <a className="logo burger" />
+        <a className="logo burger" >metra&nbsp;<span className="transfer burger">трансфер</span></a>
       </Link>
       <div className="rightNav">{renderPhoneByCity(city ?? 10)}</div>
     </div>

@@ -16,7 +16,6 @@
   left: -10px;
 
   &--large {
-    z-index: 1;
     position: relative;
     width: 60px;
     height: 60px;
@@ -111,7 +110,7 @@
 .nav__toggle {
   position: fixed;
   top: 0;
-  left: -100%;
+  left: -200%;
   right: 0;
   bottom: 0;
 
@@ -157,23 +156,26 @@
 }
 
 .logo__mob {
-  // font-size: 20px;
-  // line-height: 22px;
-  // font-weight: bold;
-  // color: var(--black);
+  font-size: 20px;
+  font-weight: 600;
 
   position: absolute;
   right: 30px;
   top: 12px;
 
-  color: transparent;
-  width: 100px;
+  width: 160px;
   height: 60px;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: -1.5px;
+}
 
-  background: url("../assets/img/metra_logo3_dark.png") 50% 50% / contain
-    no-repeat;
+.transfer_mob {
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .navBottom {
@@ -189,7 +191,13 @@
 
 .logo.burger {
   left: 55px;
+  font-size: 20px;
+  letter-spacing: -1.5px;
   @media (max-width: 340px) {
     left: 45px;
   }
+}
+
+.transfer.burger {
+  font-size: 20px;
 }

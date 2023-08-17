@@ -9,9 +9,9 @@ import { Benefits } from "../components/Benefits";
 import { ForDriversText } from "../components/content/ForDriversText";
 import Burger from "../components/nav/Burger";
 
-const title = "Стать водителем Такси Метра | Подключение к Такси Метра";
+const title = "Стать водителем Метра Трансфер | Подключение к Метра Трансфер";
 const description =
-  "Подключение к заказам Такси Метра. Работа в Такси Метра. Низкие комиссии";
+  "Подключение к заказам Метра Трансфер. Работа в Метра Трансфер. Низкие комиссии";
 
 const ForDrivers: FC = () => {
   const [width, setWidth] = useState<null | number>(null);

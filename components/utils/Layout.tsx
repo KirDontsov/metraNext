@@ -8,8 +8,7 @@ const Layout: FC<Props> = ({ children }) => (
   <div className="wrapper">
     <Head>
       <title>
-        Такси Метра - Всепогодная служба легкового пассажирского такси и
-        транспорта под заказ
+        Метра Трансфер - Всепогодная служба заказа легкового пассажирского транспорта
       </title>
       {/* <meta name="yandex-verification" content="9fcaa5f92320287d" />
 			<meta name="google-site-verification" content="4GFebNPOpe9lCdvQkf9pXJGj5IWEBkxcGE9J736ZDOY" /> */}

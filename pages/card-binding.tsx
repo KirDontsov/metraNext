@@ -7,9 +7,9 @@ import Head from "next/head";
 import CardBindingForm from "../components/CardBindingForm";
 import Burger from "../components/nav/Burger";
 
-const title = "Оплата картой Такси Метра";
+const title = "Оплата картой Метра Трансфер";
 const description =
-  "Оплата картой Такси Метра. Быстрый и удобный способ оплаты";
+  "Оплата картой Метра Трансфер. Быстрый и удобный способ оплаты";
 
 const CardBindingPage: FC = () => {
   const [width, setWidth] = useState<null | number>(null);

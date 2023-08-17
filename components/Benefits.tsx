@@ -8,7 +8,7 @@ export const Benefits: FC = () => {
         <LazyImage
           className="image"
           image={require("../assets/img/1.jpg")}
-          alt="Такси Метра"
+          alt="Метра Трансфер"
         />
         <div className="cardContent">
           <div className="cardTitle">Безопасность</div>
@@ -19,7 +19,7 @@ export const Benefits: FC = () => {
         <LazyImage
           className="image"
           image={require("../assets/img/2.jpg")}
-          alt="Такси Метра"
+          alt="Метра Трансфер"
         />
         <div className="cardContent">
           <div className="cardTitle">Доброжелательность</div>
@@ -30,7 +30,7 @@ export const Benefits: FC = () => {
         <LazyImage
           className="image"
           image={require("../assets/img/3.jpg")}
-          alt="Такси Метра"
+          alt="Метра Трансфер"
         />
         <div className="cardContent">
           <div className="cardTitle">Корпоративные клиенты</div>

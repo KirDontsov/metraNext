@@ -7,8 +7,8 @@ import { AboutText } from "../components/content/About";
 import { Benefits } from "../components/Benefits";
 import Burger from "../components/nav/Burger";
 
-const title = "О Нас | Такси Метра";
-const description = "О компании Такси Метра. Надежное такси в твоем городе";
+const title = "О Нас | Метра Трансфер";
+const description = "О компании Метра Трансфер. Надежная служба заказа транспорта в твоем городе";
 
 const About: FC = () => {
   const [width, setWidth] = useState<null | number>(null);
