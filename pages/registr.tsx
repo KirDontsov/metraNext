@@ -5,9 +5,8 @@ import Head from "next/head";
 import LoginForm from "../components/LoginForm";
 import { formTypes } from "../components/LoginForm/constants";
 import Burger from "../components/nav/Burger";
+import {TITLE} from "../shared/constants";
 
-const title =
-  "Метра Трансфер - Всепогодная служба заказа легкового пассажирского транспорта";
 const description =
   "Метра Трансфер в Геленджике. Надёжный и недорогой сервис заказа пассажирского транспорта. Поездки от 40 рублей. Оплата банковскими картами.";
 
@@ -33,7 +32,7 @@ const Login: FC = () => {
   return (
     <Layout>
       <Head>
-        <title>{title}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={description} />
       </Head>
       {isMobile ? <Burger /> : <Nav />}

@@ -94,7 +94,7 @@ export const CardBindingText: FC = () => {
         Юридический адрес: 353460, г. Геленджик, ул. Прасковеевская, д. 13, оф.
         23
       </p>
-      <p>E-mail: mail@taxi55555.ru</p>
+      <p>E-mail: info@metra-trans.ru</p>
     </div>
   );
 };

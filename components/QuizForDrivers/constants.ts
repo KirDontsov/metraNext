@@ -14,7 +14,6 @@ export const headers = {
   Pragma: "no-cache",
 };
 
-export const FORM_API_URL =
-  "http://webclient.metrataxi.ru:8000/metrasitedrvhunter";
+export const FORM_API_URL = "https://website.eorum.ru:8020/metrasitedrvhunter";
 export const CODE_CHECK_API_URL =
-  "http://webclient.metrataxi.ru:8000/metrasitedrvcodecheck";
+  "https://website.eorum.ru:8020/metrasitedrvcodecheck";

@@ -9,14 +9,14 @@ import { Dispatch, iRootState } from "../shared/store";
 import { connect } from "react-redux";
 import { CityIdType } from "../components/utils/ChangeCity/interfaces";
 import Burger from "../components/nav/Burger";
+import { TITLE } from "../shared/constants";
+import { Heading } from "../components/Heading";
 
 const DynamicMap = dynamic(() => import("../components/NextMap"), {
   ssr: false,
 });
 const DynamicQuiz = dynamic(() => import("../components/Quiz"), { ssr: false });
 
-const title =
-  "Метра Трансфер - Всепогодная служба заказа легкового пассажирского транспорта";
 const description =
   "Метра Трансфер в Новороссийске. Надёжный и недорогой сервис заказа пассажирского транспорта. Поездки от 40 рублей. Оплата банковскими картами.";
 
@@ -61,7 +61,7 @@ const Home: FC<HomeProps> = (props) => {
   return (
     <Layout>
       <Head>
-        <title>{title}</title>
+        <title>{TITLE}</title>
         <meta name="description" content={description} />
       </Head>
       {isMobile ? <Burger /> : <Nav />}
@@ -70,6 +70,7 @@ const Home: FC<HomeProps> = (props) => {
           <DynamicQuiz />
           <DynamicMap />
         </div>
+        <Heading />
         <Benefits />
         <CardBinding />
       </div>

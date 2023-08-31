@@ -154,7 +154,7 @@ class NextMap extends Component {
           maxZoom={20}
           minZoom={4}
         >
-          <TileLayer url="http://taxi.tools:8000/tilesmass.{s}/{z}/{x}/{y}.png" />
+          <TileLayer url="https://website.eorum.ru:8020/tilesmass.{s}/{z}/{x}/{y}.png" />
           <ZoomControl position="bottomright" />
           {this.renderCars()}
           {this.setPath()}

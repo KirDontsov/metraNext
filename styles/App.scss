@@ -186,3 +186,13 @@ p {
 	font-size: 18px;
 	line-height: 160%;
 }
+
+.new-heading-container {
+	max-width: 740px;
+	margin: 65px auto 96px;
+	.new-heading {
+		font-weight: 500;
+		font-size: 70px;
+		line-height: 83px;
+	}
+}

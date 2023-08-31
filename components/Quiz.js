@@ -5,8 +5,9 @@ import ChangeCity from "./utils/ChangeCity";
 
 // const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 
-const GEOCODE_LINK = 'https://geocode-maps.yandex.ru/1.x/?format=json&apikey=c07c297b-ab06-495a-87e3-2627c9c225d8&geocode=';
-const DADATA_TOKEN = 'fc70bbc8effa9a5c8946b3fe83bb4fdebba8d11d';
+const GEOCODE_LINK =
+  "https://geocode-maps.yandex.ru/1.x/?format=json&apikey=c07c297b-ab06-495a-87e3-2627c9c225d8&geocode=";
+const DADATA_TOKEN = "fc70bbc8effa9a5c8946b3fe83bb4fdebba8d11d";
 
 export class Quiz extends Component {
   // генерация UID
@@ -29,24 +30,18 @@ export class Quiz extends Component {
     );
 
     if (firstAddress !== undefined || null || "") {
-      fetch(
-        `${GEOCODE_LINK}${firstAddress}`
-      )
+      fetch(`${GEOCODE_LINK}${firstAddress}`)
         .then((response) => response.json())
         .then((result) => that.props.setData1(result));
     }
 
     if (secondAddress !== undefined || null || "") {
-      fetch(
-        `${GEOCODE_LINK}${secondAddress}`
-      )
+      fetch(`${GEOCODE_LINK}${secondAddress}`)
         .then((response) => response.json())
         .then((result) => that.props.setData2(result));
     }
     if (additionalAddress !== undefined || null || "") {
-      fetch(
-        `${GEOCODE_LINK}${additionalAddress}`
-      )
+      fetch(`${GEOCODE_LINK}${additionalAddress}`)
         .then((response) => response.json())
         .then((result) => {
           that.props.setData3(result);
@@ -103,7 +98,7 @@ export class Quiz extends Component {
           comment: this.props.comment,
           roadway: [coords1, coords3, coords2].filter((item) => item !== ""),
         });
-        fetch("http://webclient.metrataxi.ru:8000/metrasite", {
+        fetch("https://website.eorum.ru:8020/metrasite", {
           // credentials: "same-origin",
           method: "POST",
           body: formData,

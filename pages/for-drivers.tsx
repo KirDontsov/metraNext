@@ -8,6 +8,7 @@ import Head from "next/head";
 import { Benefits } from "../components/Benefits";
 import { ForDriversText } from "../components/content/ForDriversText";
 import Burger from "../components/nav/Burger";
+import { Heading } from "../components/Heading";
 
 const title = "Стать водителем Метра Трансфер | Подключение к Метра Трансфер";
 const description =
@@ -48,6 +49,7 @@ const ForDrivers: FC = () => {
           />
         </div>
         <ForDriversText />
+        <Heading />
         <Benefits />
       </div>
     </Layout>
