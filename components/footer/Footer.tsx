@@ -24,11 +24,20 @@ export const Footer = () => {
           <Link activeClassName="active" href="/public-offer">
             <a className="nav-link">Публичная оферта</a>
           </Link>
+          <Link activeClassName="active" href="/terms_of_use">
+            <a className="nav-link">Пользовательское соглашение</a>
+          </Link>
           <div className="appLinks">
-            <a className="app-link" href="https://apps.apple.com/ru/app/metra-%D1%82%D0%B0%D0%BA%D1%81%D0%B8/id1440419621">
+            <a
+              className="app-link"
+              href="https://apps.apple.com/ru/app/metra-%D1%82%D0%B0%D0%BA%D1%81%D0%B8/id1440419621"
+            >
               <Apple />
             </a>
-            <a className="app-link" href="https://play.google.com/store/apps/details?id=tools.taxi.pickup&hl=ru&gl=US">
+            <a
+              className="app-link"
+              href="https://play.google.com/store/apps/details?id=tools.taxi.pickup&hl=ru&gl=US"
+            >
               <Android />
             </a>
           </div>

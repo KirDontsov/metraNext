@@ -1,14 +1,14 @@
-import React, { FC, useEffect, useState } from "react";
-import Layout from "../components/utils/Layout";
-import Nav from "../components/nav/Nav";
 import Head from "next/head";
 import Burger from "../components/nav/Burger";
-import { PUBLIC_OFFER } from "../shared/constants/mocks";
+import Nav from "../components/nav/Nav";
+import Layout from "../components/utils/Layout";
+import React, { useEffect, useState } from "react";
+import { TERMS_OF_USE } from "../shared/constants/mocks";
 
-const title = "Публичная оферта Метра Трансфер";
-const description = "Публичная оферта Метра Трансфер.";
+const title = "Пользовательское соглашение Метра Трансфер";
+const description = "Пользовательское соглашение Метра Трансфер.";
 
-const publicOffer: FC = () => {
+const TermsOfUse = () => {
   const [width, setWidth] = useState<null | number>(null);
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -27,13 +27,13 @@ const publicOffer: FC = () => {
     }
   }, [width]);
 
-  const [html, setHTML] = useState({ __html: PUBLIC_OFFER });
+  const [html, setHTML] = useState({ __html: TERMS_OF_USE });
 
   useEffect(() => {
     async function createMarkup() {
       let response;
       response = await fetch(
-        "https://website.eorum.ru:8020/metrasite_publicofferhtml"
+        "https://website.eorum.ru:8020/metrasite_termsofusehtml"
       );
       const backendHtmlString = await response.text();
 
@@ -64,4 +64,4 @@ const publicOffer: FC = () => {
   );
 };
 
-export default publicOffer;
+export default TermsOfUse;
