@@ -32,33 +32,35 @@ class NextMap extends Component {
 
   request(that) {
     const { setItems } = that.props;
-    axios.get("http://taxi.tools:8000/cabsformetrasite").then(({ data }) => {
-      const cars = values(data.carsList);
-      // this.setState(prevState => ({ cars: update(prevState.cars, { $set: cars }) }));
+    axios
+      .get("https://website.eorum.ru:8020/cabsformetrasite")
+      .then(({ data }) => {
+        const cars = values(data.carsList);
+        // this.setState(prevState => ({ cars: update(prevState.cars, { $set: cars }) }));
 
-      const newCars = [];
-      for (let i = 0; i < cars.length; i++) {
-        const car = cars[i];
-        if (car.CabSN === null) continue;
-        const newCar = {
-          id: car.CabSN,
-          cabSN: car.CabSN,
-          AllowSelect: car.AllowSelect,
-          CarColor: car.CarColor,
-          CarModel: car.CarModel,
-          course: car.course,
-          latitude: car.latitude,
-          longitude: car.longitude,
-        };
-        newCars.push(newCar);
-      }
-      // console.log(newCars);
-      setItems(newCars);
-      setTimeout(() => {
-        that.request(that);
-        this.setPath();
-      }, 3000);
-    });
+        const newCars = [];
+        for (let i = 0; i < cars.length; i++) {
+          const car = cars[i];
+          if (car.CabSN === null) continue;
+          const newCar = {
+            id: car.CabSN,
+            cabSN: car.CabSN,
+            AllowSelect: car.AllowSelect,
+            CarColor: car.CarColor,
+            CarModel: car.CarModel,
+            course: car.course,
+            latitude: car.latitude,
+            longitude: car.longitude,
+          };
+          newCars.push(newCar);
+        }
+        // console.log(newCars);
+        setItems(newCars);
+        setTimeout(() => {
+          that.request(that);
+          this.setPath();
+        }, 3000);
+      });
   }
 
   setPath() {
