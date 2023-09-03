@@ -49,6 +49,8 @@ export const Footer = () => {
             <MasterCard />
             <Mir />
           </div>
+          <div className="appQRCode" />
+          <p>Наведите камеру на QR-код для загрузки приложения</p>
         </div>
       </div>
     </div>

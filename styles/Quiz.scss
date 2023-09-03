@@ -250,6 +250,14 @@
     }
   }
 
+  .for-drivers-app {
+    color: #325efb;
+    max-width: 400px;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+  }
+
   .MuiOutlinedInput-root {
     background: $passiveBlue !important;
     width: 100%;

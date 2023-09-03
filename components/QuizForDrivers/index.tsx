@@ -307,6 +307,9 @@ const Quiz: FC<QuizForDriversProps> = (props) => {
             </>
           )}
         </div>
+        <a className="for-drivers-app" href="/app-for-drivers">
+          Приложение для водителей
+        </a>
       </div>
     </ThemeProvider>
   );

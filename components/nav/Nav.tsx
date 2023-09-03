@@ -44,29 +44,29 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
   }, [setAccountClicked, accountClicked, router]);
 
   const renderPhoneByCity = (city: number) => {
-    switch(city) {
-      case (CityIdType.GELENDJIK):
+    switch (city) {
+      case CityIdType.GELENDJIK:
         return (
           <a href="tel:+78614155555" className="phone">
             +7 (861-41) 5-55-55
           </a>
         );
-      case (CityIdType.NOVOROSSIYSK):
+      case CityIdType.NOVOROSSIYSK:
         return (
           <a href="tel:+78617610111" className="phone">
             +7 (861-7) 610-111
           </a>
         );
-      case (CityIdType.YEYSK):
+      case CityIdType.YEYSK:
         return (
           <a href="tel:+78613235555" className="phone">
             +7 (861-32) 3-55-55
           </a>
         );
-      case(CityIdType.TAGANROG):
+      case CityIdType.TAGANROG:
         return (
           <a href="tel:+78634333333" className="phone">
-            +7 (863-4) 333-333
+            +7 (863-4) 33-33-33
           </a>
         );
       default:
@@ -82,7 +82,9 @@ const Nav: FC<NavProps> = ({ city, accountClicked, setAccountClicked }) => {
     <div className="nav-wrapper">
       <div className="center nav__bot">
         <Link activeClassName="active" href="/">
-          <a className="logo" >metra&nbsp;<span className="transfer">трансфер</span></a>
+          <a className="logo">
+            metra&nbsp;<span className="transfer">трансфер</span>
+          </a>
         </Link>
         <nav>
           <Link activeClassName="active" href={activeHref}>

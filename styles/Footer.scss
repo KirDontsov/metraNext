@@ -40,8 +40,11 @@
 			}
 
 			.appLinks {
-				margin-top: 40px;
+				margin-top: 156px;
 				display: flex;
+				.app-link {
+					height: fit-content;
+				}
 				.android {
 					margin-top: -10px;
 					margin-left: 20px;
@@ -50,6 +53,11 @@
 		}
 		.rightLinks {
 			width: 50%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			gap: 56px;
+			color: white;
 			@media (max-width: 768px) {
 				width: 100%;
 				margin-top: 30px;
@@ -85,6 +93,14 @@
 						margin-bottom: 30px;
 					}
 				}
+			}
+
+			.appQRCode {
+				display: block;
+				width: 200px;
+				height: 200px;
+				content: '';
+				background: url("../assets/img/app-qr-code.jpeg") 50% 50% / contain no-repeat;
 			}
 		}
 	}
