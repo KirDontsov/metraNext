@@ -80,26 +80,26 @@ const Burger: FC<BurgerProps> = ({ city }) => {
   }
 
   const renderPhoneByCity = (city: number) => {
-    switch(city) {
-      case (CityIdType.GELENDJIK):
+    switch (city) {
+      case CityIdType.GELENDJIK:
         return (
           <a href="tel:+78614155555" className="phone">
             +7 (861-41) 5-55-55
           </a>
         );
-      case (CityIdType.NOVOROSSIYSK):
+      case CityIdType.NOVOROSSIYSK:
         return (
           <a href="tel:+78617610111" className="phone">
             +7 (861-7) 610-111
           </a>
         );
-      case (CityIdType.YEYSK):
+      case CityIdType.YEYSK:
         return (
           <a href="tel:+78613235555" className="phone">
             +7 (861-32) 3-55-55
           </a>
         );
-      case(CityIdType.TAGANROG):
+      case CityIdType.TAGANROG:
         return (
           <a href="tel:+78634333333" className="phone">
             +7 (863-4) 333-333
@@ -130,7 +130,9 @@ const Burger: FC<BurgerProps> = ({ city }) => {
             <div className={navClass.join(" ")}>
               <div className="container__mob">
                 <Link activeClassName="active" href="/">
-                  <a className="logo__mob" >metra&nbsp;<span className="transfer_mob">трансфер</span></a>
+                  <a className="logo__mob">
+                    metra&nbsp;<span className="transfer_mob">трансфер</span>
+                  </a>
                 </Link>
                 <Link activeClassName="active" href="/about">
                   <a className="nav-link">О нас</a>
@@ -146,6 +148,9 @@ const Burger: FC<BurgerProps> = ({ city }) => {
                 </Link>
                 <Link activeClassName="active" href="/public-offer">
                   <a className="nav-link">Публичная оферта</a>
+                </Link>
+                <Link activeClassName="active" href="/terms_of_use">
+                  <a className="nav-link">Пользовательское соглашение</a>
                 </Link>
                 <div className="appLinks">
                   <a
@@ -178,7 +183,9 @@ const Burger: FC<BurgerProps> = ({ city }) => {
         )}
       </Motion>
       <Link activeClassName="active" href="/">
-        <a className="logo burger" >metra&nbsp;<span className="transfer burger">трансфер</span></a>
+        <a className="logo burger">
+          metra&nbsp;<span className="transfer burger">трансфер</span>
+        </a>
       </Link>
       <div className="rightNav">{renderPhoneByCity(city ?? 10)}</div>
     </div>

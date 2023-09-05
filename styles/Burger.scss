@@ -129,18 +129,31 @@
     padding: 40% 30%;
     margin: 0 auto;
     position: relative;
-    @media (max-width: 425px) {
-      padding: 70% 14%;
+    @media (max-width: 768px) {
+      align-items: center;
+      padding: 40% 20%;
+      @media (max-width: 425px) {
+        padding: 70% 14%;
+      }
     }
 
     .nav-link {
       font-size: 35px;
-      line-height: 160%;
+      line-height: 140%;
       color: $textColor;
       position: relative;
       text-align: center;
+      margin-bottom: 6px;
       &.active:before {
         bottom: 0;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 24px;
+        @media (max-width: 425px) {
+          font-size: 24px;
+          max-width: 230px;
+        }
       }
     }
     .appLinks {

@@ -57,7 +57,7 @@ const TermsOfUse = () => {
         <meta name="description" content={description} />
       </Head>
       {isMobile ? <Burger /> : <Nav />}
-      <div className="container web">
+      <div className="container web terms_of_use">
         <div dangerouslySetInnerHTML={html} />
       </div>
     </Layout>

@@ -93,6 +93,9 @@ nav a {
 	justify-items: center;
 	font-weight: 300;
 	font-size: 45px;
+	@media (max-width: 432px) {
+		display: none;
+	}
 }
 
 .nav__top {
